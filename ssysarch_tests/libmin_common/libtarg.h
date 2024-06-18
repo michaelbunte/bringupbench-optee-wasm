@@ -50,8 +50,11 @@
 #define LLONG_MAX     __LONG_LONG_MAX__
 
 /* size type */
-typedef __SIZE_TYPE__   size_t;
-typedef signed __SIZE_TYPE__   ssize_t;
+#if defined(REE_WASM)
+#else 
+    // typedef __SIZE_TYPE__   size_t;
+    // typedef signed __SIZE_TYPE__   ssize_t;
+#endif
 
 /* signed */
 typedef __INT8_TYPE__   int8_t;

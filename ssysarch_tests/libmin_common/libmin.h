@@ -3,13 +3,13 @@
 
 // =================== START CUSTOM SSYSARCH MACROS ================
 
-#ifdef REE_C
+#if defined(REE_C) || defined(REE_WASM)
 	#include <stdio.h>
 	#define TA_CREATE_ENTRY_POINT
 	#define TA_DESTROY_ENTRY_POINT
 	#define TA_OPEN_SESSION_ENTRY_POINT
 	#define TA_CLOSE_SESSION_ENTRY_POINT
-	#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER main(void)
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER int main(void)
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE
 #else
@@ -69,10 +69,12 @@
 // #else /* TARGET_SILENT */
 // /* run silent */
 
-#ifdef REE_C
+#if defined(REE_C) || defined(REE_WASM)
 	#define libmin_printf(FMT, ...) printf(FMT __VA_OPT__(,) __VA_ARGS__)
+	#define SUCCESS() printf("Success!")
 #else 
 	#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
+	#define SUCCESS() IMSG("Success!")
 #endif
 // #define libmin_printf(FMT, ...) while(false){}
 
@@ -81,7 +83,6 @@
 
 // /* successfully exit co-simulation */
 // void libmin_success(void);
-#define SUCCESS() IMSG("Success!")
 
 // =================== END REWRITTEN FUNCTIONS ================
 
