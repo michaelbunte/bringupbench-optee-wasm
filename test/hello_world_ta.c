@@ -829,20 +829,6 @@ static TEE_Result dec_value(uint32_t param_types,
  trace_printf(__func__, 107, (2), (1), "Decrease value to: %u", params[0].value.a);
  return 0x00000000;
 }
-TEE_Result TA_InvokeCommandEntryPoint(void __attribute__((unused)) *sess_ctx,
-   uint32_t cmd_id,
-   uint32_t param_types, TEE_Param params[4])
-{
- (void)&sess_ctx;
- switch (cmd_id) {
- case 0:
-  return inc_value(param_types, params);
- case 1:
-  return dec_value(param_types, params);
- default:
-  return 0xFFFF0006;
- }
-}
 static unsigned a[0xFFFF][0x10];
 static unsigned depth;
 static unsigned max_depth;

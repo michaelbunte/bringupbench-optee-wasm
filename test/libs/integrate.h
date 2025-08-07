@@ -108,27 +108,6 @@ static TEE_Result dec_value(uint32_t param_types,
 
 	return TEE_SUCCESS;
 }
-/*
- * Called when a TA is invoked. sess_ctx hold that value that was
- * assigned by TA_OpenSessionEntryPoint(). The rest of the paramters
- * comes from normal world.
- */
-TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
-			uint32_t cmd_id,
-			uint32_t param_types, TEE_Param params[4])
-{
-	(void)&sess_ctx; /* Unused parameter */
-
-	switch (cmd_id) {
-	case TA_HELLO_WORLD_CMD_INC_VALUE:
-		return inc_value(param_types, params);
-	case TA_HELLO_WORLD_CMD_DEC_VALUE:
-		return dec_value(param_types, params);
-	default:
-		return TEE_ERROR_BAD_PARAMETERS;
-	}
-}
-
 #endif
 
 
