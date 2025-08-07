@@ -29,6 +29,7 @@
 #include <tee_internal_api_extensions.h>
 
 #include <hello_world_ta.h>
+#include <common/libmin.h>
 
 /*
  * Called when the instance of the TA is created. This is the first call in
@@ -94,8 +95,52 @@ void TA_CloseSessionEntryPoint(void __maybe_unused *sess_ctx)
 	IMSG("Goodbye!\n");
 }
 
+//==========================================================
+
+
+#define AMAX 5  /* largest arguments to contemplate. This is waaaaaaaaaay more than sufficient! */
+
+/* Play around with these definitions. Can you get a(1,4)? */
+#define MAX_X 0xFFFF  /* rows in storage array */
+#define MAX_Y 0x10    /* columns in storage array */
+#define MAX_DEPTH 0xffFFFF /* stack guard */
+
+static unsigned a[MAX_X][MAX_Y]; /* Remembered values */
+static unsigned depth;
+static unsigned max_depth;
+
+/* Implement Ackermann function as recursive function that remembers its values */
+unsigned ack(unsigned x, unsigned y)
+{
+	depth++;
+	if (depth > MAX_DEPTH)
+  {
+		libmin_printf("Maximum stack depth %d exceeded. Abort.\n", MAX_DEPTH);
+		libmin_fail(1);
+	}
+	if (x >= MAX_X)
+  {
+		libmin_printf("Maximum x value %d exceeded. Abort. \n", MAX_X);
+		libmin_fail(1);
+	}
+	if (y >= MAX_Y)
+  {
+		libmin_printf("Maximum y value %d exceeded. Abort. \n", MAX_Y);
+		libmin_fail(1);
+	}
+	if (a[x][y])
+    return a[x][y];
+	if (y==0)
+    return a[x][0] = x+1;
+	if (x==0)
+    return a[0][y] = ack(1,y-1);
+  return a[x][y] = ack(ack(x-1,y),y-1);
+}
+
+//==========================================================
+
 /*
- * Called when a TA is invoked. sess_ctx hold that value that was
+* Called when a TA is invoked. sess_ctx hold that value that was
  * assigned by TA_OpenSessionEntryPoint(). The rest of the paramters
  * comes from normal world.
  */
@@ -104,6 +149,22 @@ TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
 			uint32_t param_types, TEE_Param params[4])
 {
 	(void)&sess_ctx; /* Unused parameter */
-        
-        return TEE_SUCCESS;
+    
+	unsigned y,k; 
+	max_depth = 0;
+	for(k=0;k<=AMAX;k++)
+	{
+		libmin_printf("\nx+y=%d:\n\n",k);
+		for(y=0;y<=k;y++)
+		{
+			depth = 0;  /* stack guard */
+			libmin_printf("A(%d,%d) = %d\n",k-y,y,ack(k-y,y));
+			if (depth > max_depth)
+				max_depth = depth;   
+		}
+	}
+	libmin_printf("Max recursive depth = %u\n", max_depth);
+	libmin_success();
+
+    return TEE_SUCCESS;
 }
