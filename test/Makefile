@@ -29,7 +29,7 @@ CFLAGS := -Wall -O3 -g -DTARGET_SA -I$(LIBDIR) -I../target -D$(TYPE)
 build_ree_c: $(EXE)
 
 build_tee_c: libs/integrate.h
-	gcc -DTEE_C -I./libs -I../common -I../target\
+	gcc -DTEE_C -DTARGET_SA -I./libs -I../common -I../target\
   -I/home/nick2/optee-dependencies/Jetson_Linux_R35.4.1_aarch64/Linux_for_Tegra/sources/tegra/optee-src/nv-optee/optee/build/t234/export-ta_arm64/include \
   -E -P ackermann.c
 
