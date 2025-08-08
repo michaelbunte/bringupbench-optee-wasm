@@ -4,10 +4,10 @@
 
 #include <stddef.h>
 
-// #include "libtarg.h"
+#include "libtarg.h"
 
-// #define TRUE  1
-// #define FALSE 0
+#define TRUE  1
+#define FALSE 0
 
 // /* Build parameters:
 
@@ -88,10 +88,10 @@ size_t libmin_strlen(const char *str);
 // void libmin_success(void);
 
 // /* exit co-simulation with failure exit code CODE */
-// void libmin_fail(int code);
+void libmin_fail(int code);
 
 // /* largest random number, must be power-of-two-minus-one! */
-// #define RAND_MAX (0x7fffffff)
+#define RAND_MAX (0x7fffffff)
 
 // #ifdef notdef
 // /* largest numbers */
@@ -99,7 +99,7 @@ size_t libmin_strlen(const char *str);
 // #endif /* notdef */
 
 // /* see the random integer generator */
-// void libmin_srand(unsigned int seed);
+void libmin_srand(unsigned int seed);
 
 // /* generate a random integer */
 // unsigned int libmin_rand(void);
