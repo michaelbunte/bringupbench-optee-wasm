@@ -27,7 +27,6 @@
 
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
-#include <stdlib.h>
 
 #include <hello_world_ta.h>
 #include "test.h"
@@ -156,7 +155,6 @@ TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
 	// test();
 	libmin_abs(10);
 	// abort();
-	exit(0);
 
 	// libmin_printf("hi there!");
 

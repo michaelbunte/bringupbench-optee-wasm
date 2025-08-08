@@ -12,8 +12,6 @@ Archive member included to satisfy reference by file (symbol)
                               /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o) (memchr)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
                               /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o) (strlen)
-/home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
-                              ./hello_world_ta.o (abort)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
                               /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o) (trace_ext_puts)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
@@ -22,6 +20,8 @@ Archive member included to satisfy reference by file (symbol)
                               ./user_ta_header.o (__ta_open_sess)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
                               /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o) (_utee_panic)
+/home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                              /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o) (abort)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
                               /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o) (TEE_Malloc)
 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
@@ -89,9 +89,6 @@ Discarded input sections
  .group         0x0000000000000000        0xc ./hello_world_ta.o
  .group         0x0000000000000000        0xc ./hello_world_ta.o
  .group         0x0000000000000000        0xc ./hello_world_ta.o
- .group         0x0000000000000000        0xc ./hello_world_ta.o
- .group         0x0000000000000000        0xc ./hello_world_ta.o
- .group         0x0000000000000000        0xc ./hello_world_ta.o
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
@@ -99,10 +96,23 @@ Discarded input sections
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
  .group         0x0000000000000000        0xc ./include/common/libmin_abs.o
+ .debug_macro   0x0000000000000000      0x189 ./include/common/libmin_abs.o
  .debug_macro   0x0000000000000000       0x58 ./include/common/libmin_abs.o
  .debug_macro   0x0000000000000000       0x7c ./include/common/libmin_abs.o
  .debug_macro   0x0000000000000000      0x1a0 ./include/common/libmin_abs.o
- .debug_macro   0x0000000000000000      0x189 ./include/common/libmin_abs.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .group         0x0000000000000000        0xc ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000      0x189 ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000       0x10 ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000       0x58 ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000       0x7c ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000      0x1a0 ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000000000       0x88 ./include/common/libmin_strlen.o
  .group         0x0000000000000000        0xc ./user_ta_header.o
  .group         0x0000000000000000        0xc ./user_ta_header.o
  .group         0x0000000000000000        0xc ./user_ta_header.o
@@ -130,8 +140,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1a0 ./user_ta_header.o
  .debug_macro   0x0000000000000000       0xc4 ./user_ta_header.o
  .debug_macro   0x0000000000000000       0x22 ./user_ta_header.o
- .debug_macro   0x0000000000000000       0x2e ./user_ta_header.o
- .debug_macro   0x0000000000000000       0x33 ./user_ta_header.o
  .debug_macro   0x0000000000000000      0xceb ./user_ta_header.o
  .debug_macro   0x0000000000000000       0x35 ./user_ta_header.o
  .debug_macro   0x0000000000000000       0x58 ./user_ta_header.o
@@ -232,35 +240,6 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
  .debug_macro   0x0000000000000000       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
  .debug_macro   0x0000000000000000       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000      0x5c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000      0x10b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000      0x1a0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0xc4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x2e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x33 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000      0xcf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x35 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x34 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000000000       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
@@ -357,6 +336,35 @@ Discarded input sections
  .debug_macro   0x0000000000000000       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
  .debug_macro   0x0000000000000000       0x34 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
  .debug_macro   0x0000000000000000       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000      0x5c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000      0x10b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000      0x1a0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0xc4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x2e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x33 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000      0xcf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x35 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x34 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x0000000000000000       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .group         0x0000000000000000        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
@@ -869,640 +877,644 @@ Linker script and memory map
  .ta_head       0x0000000000000000       0x20 ./user_ta_header.o
                 0x0000000000000000                ta_head
 
-.text           0x0000000000000020     0xc924
+.text           0x0000000000000020     0xca70
                 0x0000000000000020                __text_start = .
  *(SORT_BY_ALIGNMENT(.text) SORT_BY_ALIGNMENT(.text.*))
  .text          0x0000000000000020       0xec /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
                 0x0000000000000020                memcpy
- .text          0x000000000000010c      0x100 ./hello_world_ta.o
+ .text          0x000000000000010c      0x224 ./hello_world_ta.o
                 0x000000000000010c                TA_CreateEntryPoint
                 0x0000000000000140                TA_DestroyEntryPoint
                 0x0000000000000164                __GP11_TA_OpenSessionEntryPoint
                 0x00000000000001d4                TA_CloseSessionEntryPoint
                 0x00000000000001f8                __GP11_TA_InvokeCommandEntryPoint
- .text          0x000000000000020c        0xc ./include/common/libmin_abs.o
-                0x000000000000020c                libmin_abs
- .text          0x0000000000000218       0x34 ./user_ta_header.o
-                0x0000000000000218                __ta_entry
-                0x000000000000022c                tahead_get_trace_level
-                0x0000000000000234                TA_OpenSessionEntryPoint
-                0x0000000000000240                TA_InvokeCommandEntryPoint
- .text          0x000000000000024c      0x32c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
-                0x000000000000024c                trace_set_level
-                0x0000000000000268                trace_get_level
-                0x0000000000000278                trace_vprintf
-                0x0000000000000494                trace_printf
-                0x0000000000000574                dhex_dump
- .text          0x0000000000000578       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
-                0x0000000000000578                __stack_chk_fail
- .text          0x00000000000005a8      0xe10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
-                0x00000000000005a8                __vsnprintf
-                0x0000000000000668                vsnprintk
-                0x00000000000006c0                snprintk
-                0x000000000000136c                __vsprintf
- .text          0x00000000000013b8       0x2c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
-                0x00000000000013b8                memchr
- .text          0x00000000000013e4       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
-                0x00000000000013e4                strlen
- .text.unlikely
-                0x0000000000001400       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
-                0x0000000000001400                abort
- .text          0x0000000000001420      0x1e0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
-                0x0000000000001420                trace_ext_puts
-                0x0000000000001448                trace_ext_get_thread_id
-                0x0000000000001450                printf
-                0x0000000000001550                puts
-                0x0000000000001590                putchar
- .text          0x0000000000001600      0x74c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
-                0x00000000000018c4                __utee_call_elf_init_fn
-                0x0000000000001a1c                __utee_call_elf_fini_fn
-                0x0000000000001ac4                __utee_entry
- .text          0x0000000000001d4c      0x234 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
-                0x0000000000001e14                __ta_open_sess
-                0x0000000000001ec0                __ta_invoke_cmd
+ .text          0x0000000000000330        0xc ./include/common/libmin_abs.o
+                0x0000000000000330                libmin_abs
+ .text          0x000000000000033c       0x28 ./include/common/libmin_strlen.o
+                0x000000000000033c                libmin_strlen
+ .text          0x0000000000000364       0x34 ./user_ta_header.o
+                0x0000000000000364                __ta_entry
+                0x0000000000000378                tahead_get_trace_level
+                0x0000000000000380                TA_OpenSessionEntryPoint
+                0x000000000000038c                TA_InvokeCommandEntryPoint
+ .text          0x0000000000000398      0x32c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+                0x0000000000000398                trace_set_level
+                0x00000000000003b4                trace_get_level
+                0x00000000000003c4                trace_vprintf
+                0x00000000000005e0                trace_printf
+                0x00000000000006c0                dhex_dump
+ .text          0x00000000000006c4       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+                0x00000000000006c4                __stack_chk_fail
+ .text          0x00000000000006f4      0xe10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+                0x00000000000006f4                __vsnprintf
+                0x00000000000007b4                vsnprintk
+                0x000000000000080c                snprintk
+                0x00000000000014b8                __vsprintf
+ .text          0x0000000000001504       0x2c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+                0x0000000000001504                memchr
+ .text          0x0000000000001530       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+                0x0000000000001530                strlen
+ .text          0x000000000000154c      0x1e0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+                0x000000000000154c                trace_ext_puts
+                0x0000000000001574                trace_ext_get_thread_id
+                0x000000000000157c                printf
+                0x000000000000167c                puts
+                0x00000000000016bc                putchar
+ .text          0x000000000000172c      0x74c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+                0x00000000000019f0                __utee_call_elf_init_fn
+                0x0000000000001b48                __utee_call_elf_fini_fn
+                0x0000000000001bf0                __utee_entry
+ .text          0x0000000000001e78      0x234 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+                0x0000000000001f40                __ta_open_sess
+                0x0000000000001fec                __ta_invoke_cmd
  .text._utee_panic
-                0x0000000000001f80        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001f80                _utee_panic
- .text._utee_return
-                0x0000000000001f8c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001f8c                _utee_return
- .text._utee_log
-                0x0000000000001f98        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001f98                _utee_log
- .text.__utee_panic
-                0x0000000000001fa4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fa4                __utee_panic
- .text._utee_get_property
-                0x0000000000001fb0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fb0                _utee_get_property
- .text._utee_get_property_name_to_index
-                0x0000000000001fbc        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fbc                _utee_get_property_name_to_index
- .text._utee_open_ta_session
-                0x0000000000001fc8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fc8                _utee_open_ta_session
- .text._utee_close_ta_session
-                0x0000000000001fd4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fd4                _utee_close_ta_session
- .text._utee_invoke_ta_command
-                0x0000000000001fe0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fe0                _utee_invoke_ta_command
- .text._utee_get_cancellation_flag
-                0x0000000000001fec        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001fec                _utee_get_cancellation_flag
- .text._utee_check_access_rights
-                0x0000000000001ff8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000001ff8                _utee_check_access_rights
- .text._utee_unmask_cancellation
-                0x0000000000002004        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002004                _utee_unmask_cancellation
- .text._utee_mask_cancellation
-                0x0000000000002010        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002010                _utee_mask_cancellation
- .text._utee_wait
-                0x000000000000201c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000201c                _utee_wait
- .text._utee_get_time
-                0x0000000000002028        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002028                _utee_get_time
- .text._utee_set_ta_time
-                0x0000000000002034        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002034                _utee_set_ta_time
- .text._utee_cryp_state_alloc
-                0x0000000000002040        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002040                _utee_cryp_state_alloc
- .text._utee_cryp_state_copy
-                0x000000000000204c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000204c                _utee_cryp_state_copy
- .text._utee_cryp_state_free
-                0x0000000000002058        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002058                _utee_cryp_state_free
- .text._utee_hash_init
-                0x0000000000002064        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002064                _utee_hash_init
- .text._utee_hash_update
-                0x0000000000002070        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002070                _utee_hash_update
- .text._utee_hash_final
-                0x000000000000207c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000207c                _utee_hash_final
- .text._utee_cipher_init
-                0x0000000000002088        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002088                _utee_cipher_init
- .text._utee_cipher_update
-                0x0000000000002094        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002094                _utee_cipher_update
- .text._utee_cipher_final
-                0x00000000000020a0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020a0                _utee_cipher_final
- .text._utee_cryp_obj_get_info
                 0x00000000000020ac        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020ac                _utee_cryp_obj_get_info
- .text._utee_cryp_obj_restrict_usage
+                0x00000000000020ac                _utee_panic
+ .text._utee_return
                 0x00000000000020b8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020b8                _utee_cryp_obj_restrict_usage
- .text._utee_cryp_obj_get_attr
+                0x00000000000020b8                _utee_return
+ .text._utee_log
                 0x00000000000020c4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020c4                _utee_cryp_obj_get_attr
- .text._utee_cryp_obj_alloc
+                0x00000000000020c4                _utee_log
+ .text.__utee_panic
                 0x00000000000020d0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020d0                _utee_cryp_obj_alloc
- .text._utee_cryp_obj_close
+                0x00000000000020d0                __utee_panic
+ .text._utee_get_property
                 0x00000000000020dc        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020dc                _utee_cryp_obj_close
- .text._utee_cryp_obj_reset
+                0x00000000000020dc                _utee_get_property
+ .text._utee_get_property_name_to_index
                 0x00000000000020e8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020e8                _utee_cryp_obj_reset
- .text._utee_cryp_obj_populate
+                0x00000000000020e8                _utee_get_property_name_to_index
+ .text._utee_open_ta_session
                 0x00000000000020f4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000020f4                _utee_cryp_obj_populate
- .text._utee_cryp_obj_copy
+                0x00000000000020f4                _utee_open_ta_session
+ .text._utee_close_ta_session
                 0x0000000000002100        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002100                _utee_cryp_obj_copy
- .text._utee_cryp_derive_key
+                0x0000000000002100                _utee_close_ta_session
+ .text._utee_invoke_ta_command
                 0x000000000000210c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000210c                _utee_cryp_derive_key
- .text._utee_cryp_random_number_generate
+                0x000000000000210c                _utee_invoke_ta_command
+ .text._utee_get_cancellation_flag
                 0x0000000000002118        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002118                _utee_cryp_random_number_generate
- .text._utee_authenc_init
+                0x0000000000002118                _utee_get_cancellation_flag
+ .text._utee_check_access_rights
                 0x0000000000002124        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002124                _utee_authenc_init
- .text._utee_authenc_update_aad
+                0x0000000000002124                _utee_check_access_rights
+ .text._utee_unmask_cancellation
                 0x0000000000002130        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002130                _utee_authenc_update_aad
- .text._utee_authenc_update_payload
+                0x0000000000002130                _utee_unmask_cancellation
+ .text._utee_mask_cancellation
                 0x000000000000213c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000213c                _utee_authenc_update_payload
- .text._utee_authenc_enc_final
+                0x000000000000213c                _utee_mask_cancellation
+ .text._utee_wait
                 0x0000000000002148        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002148                _utee_authenc_enc_final
- .text._utee_authenc_dec_final
+                0x0000000000002148                _utee_wait
+ .text._utee_get_time
                 0x0000000000002154        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002154                _utee_authenc_dec_final
- .text._utee_asymm_operate
+                0x0000000000002154                _utee_get_time
+ .text._utee_set_ta_time
                 0x0000000000002160        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002160                _utee_asymm_operate
- .text._utee_asymm_verify
+                0x0000000000002160                _utee_set_ta_time
+ .text._utee_cryp_state_alloc
                 0x000000000000216c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000216c                _utee_asymm_verify
- .text._utee_storage_obj_open
+                0x000000000000216c                _utee_cryp_state_alloc
+ .text._utee_cryp_state_copy
                 0x0000000000002178        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002178                _utee_storage_obj_open
- .text._utee_storage_obj_create
+                0x0000000000002178                _utee_cryp_state_copy
+ .text._utee_cryp_state_free
                 0x0000000000002184        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002184                _utee_storage_obj_create
- .text._utee_storage_obj_del
+                0x0000000000002184                _utee_cryp_state_free
+ .text._utee_hash_init
                 0x0000000000002190        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002190                _utee_storage_obj_del
- .text._utee_storage_obj_rename
+                0x0000000000002190                _utee_hash_init
+ .text._utee_hash_update
                 0x000000000000219c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x000000000000219c                _utee_storage_obj_rename
- .text._utee_storage_alloc_enum
+                0x000000000000219c                _utee_hash_update
+ .text._utee_hash_final
                 0x00000000000021a8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021a8                _utee_storage_alloc_enum
- .text._utee_storage_free_enum
+                0x00000000000021a8                _utee_hash_final
+ .text._utee_cipher_init
                 0x00000000000021b4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021b4                _utee_storage_free_enum
- .text._utee_storage_reset_enum
+                0x00000000000021b4                _utee_cipher_init
+ .text._utee_cipher_update
                 0x00000000000021c0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021c0                _utee_storage_reset_enum
- .text._utee_storage_start_enum
+                0x00000000000021c0                _utee_cipher_update
+ .text._utee_cipher_final
                 0x00000000000021cc        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021cc                _utee_storage_start_enum
- .text._utee_storage_next_enum
+                0x00000000000021cc                _utee_cipher_final
+ .text._utee_cryp_obj_get_info
                 0x00000000000021d8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021d8                _utee_storage_next_enum
- .text._utee_storage_obj_read
+                0x00000000000021d8                _utee_cryp_obj_get_info
+ .text._utee_cryp_obj_restrict_usage
                 0x00000000000021e4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021e4                _utee_storage_obj_read
- .text._utee_storage_obj_write
+                0x00000000000021e4                _utee_cryp_obj_restrict_usage
+ .text._utee_cryp_obj_get_attr
                 0x00000000000021f0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021f0                _utee_storage_obj_write
- .text._utee_storage_obj_trunc
+                0x00000000000021f0                _utee_cryp_obj_get_attr
+ .text._utee_cryp_obj_alloc
                 0x00000000000021fc        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x00000000000021fc                _utee_storage_obj_trunc
- .text._utee_storage_obj_seek
+                0x00000000000021fc                _utee_cryp_obj_alloc
+ .text._utee_cryp_obj_close
                 0x0000000000002208        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002208                _utee_storage_obj_seek
- .text._utee_cryp_obj_generate_key
+                0x0000000000002208                _utee_cryp_obj_close
+ .text._utee_cryp_obj_reset
                 0x0000000000002214        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002214                _utee_cryp_obj_generate_key
- .text._utee_cache_operation
+                0x0000000000002214                _utee_cryp_obj_reset
+ .text._utee_cryp_obj_populate
                 0x0000000000002220        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
-                0x0000000000002220                _utee_cache_operation
- .text          0x000000000000222c     0x10c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
-                0x00000000000025dc                TEE_CloseTASession
-                0x0000000000002604                TEE_GetCancellationFlag
-                0x0000000000002664                TEE_UnmaskCancellation
-                0x00000000000026c4                TEE_MaskCancellation
-                0x0000000000002724                TEE_CheckMemoryAccessRights
-                0x0000000000002948                TEE_OpenTASession
-                0x0000000000002a9c                __GP11_TEE_OpenTASession
-                0x0000000000002be4                TEE_InvokeTACommand
-                0x0000000000002d68                __GP11_TEE_InvokeTACommand
-                0x0000000000002ee0                __GP11_TEE_CheckMemoryAccessRights
-                0x0000000000002ee8                TEE_SetInstanceData
-                0x0000000000002ef4                TEE_GetInstanceData
-                0x0000000000002f00                TEE_MemMove
-                0x0000000000002f04                __GP11_TEE_MemMove
-                0x0000000000002f0c                TEE_MemCompare
-                0x0000000000002f10                __GP11_TEE_MemCompare
-                0x0000000000002f18                TEE_MemFill
-                0x0000000000002f1c                __GP11_TEE_MemFill
-                0x0000000000002f24                TEE_GetSystemTime
-                0x0000000000002f4c                TEE_Wait
-                0x0000000000002f88                TEE_GetTAPersistentTime
-                0x0000000000002ffc                TEE_SetTAPersistentTime
-                0x0000000000003040                TEE_GetREETime
-                0x0000000000003068                TEE_Malloc
-                0x000000000000318c                __GP11_TEE_Malloc
-                0x0000000000003194                TEE_Free
-                0x00000000000031f4                TEE_Realloc
-                0x00000000000032cc                __GP11_TEE_Realloc
-                0x00000000000032d4                TEE_CacheClean
-                0x00000000000032dc                TEE_CacheFlush
-                0x00000000000032e4                TEE_CacheInvalidate
- .text          0x00000000000032ec     0x212c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
-                0x0000000000003b50                _TEE_MathAPI_Init
-                0x0000000000003ba0                TEE_BigIntInit
-                0x0000000000003c00                __GP11_TEE_BigIntInit
-                0x0000000000003c08                TEE_BigIntConvertFromOctetString
-                0x0000000000003cd0                __GP11_TEE_BigIntConvertFromOctetString
-                0x0000000000003cd8                TEE_BigIntConvertToOctetString
-                0x0000000000003da0                __GP11_TEE_BigIntConvertToOctetString
-                0x0000000000003e00                TEE_BigIntConvertFromS32
-                0x0000000000003eb0                TEE_BigIntConvertToS32
-                0x0000000000003f6c                TEE_BigIntCmp
-                0x0000000000004000                TEE_BigIntCmpS32
-                0x000000000000424c                TEE_BigIntShiftRight
-                0x00000000000043ec                __GP11_TEE_BigIntShiftRight
-                0x00000000000043f4                TEE_BigIntGetBit
-                0x0000000000004474                TEE_BigIntGetBitCount
-                0x00000000000044e8                TEE_BigIntSetBit
-                0x0000000000004598                TEE_BigIntAssign
-                0x00000000000045e8                TEE_BigIntAbs
-                0x0000000000004614                TEE_BigIntAdd
-                0x0000000000004620                TEE_BigIntSub
-                0x000000000000462c                TEE_BigIntNeg
-                0x0000000000004710                TEE_BigIntMul
-                0x0000000000004824                TEE_BigIntSquare
-                0x000000000000482c                TEE_BigIntDiv
-                0x00000000000049e0                TEE_BigIntMod
-                0x0000000000004a4c                TEE_BigIntAddMod
-                0x0000000000004a58                TEE_BigIntSubMod
-                0x0000000000004a64                TEE_BigIntMulMod
-                0x0000000000004a70                TEE_BigIntSquareMod
-                0x0000000000004a7c                TEE_BigIntInvMod
-                0x0000000000004bcc                TEE_BigIntRelativePrime
-                0x0000000000004cd4                TEE_BigIntExpMod
-                0x0000000000004ea8                TEE_BigIntComputeExtendedGcd
-                0x0000000000005110                TEE_BigIntIsProbablePrime
-                0x0000000000005194                TEE_BigIntInitFMM
-                0x0000000000005198                __GP11_TEE_BigIntInitFMM
-                0x00000000000051a0                TEE_BigIntInitFMMContext
-                0x00000000000051a4                __GP11_TEE_BigIntInitFMMContext
-                0x00000000000051ac                TEE_BigIntInitFMMContext1
-                0x00000000000051b4                TEE_BigIntFMMSizeInU32
-                0x00000000000051c4                __GP11_TEE_BigIntFMMSizeInU32
-                0x00000000000051dc                TEE_BigIntFMMContextSizeInU32
-                0x00000000000051e4                __GP11_TEE_BigIntFMMContextSizeInU32
-                0x00000000000051fc                TEE_BigIntConvertToFMM
-                0x0000000000005200                TEE_BigIntConvertFromFMM
-                0x00000000000052d0                TEE_BigIntComputeFMM
- .text          0x0000000000005418      0x21c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
-                0x0000000000005434                TEE_Panic
-                0x000000000000544c                __utee_check_outbuf_annotation
-                0x0000000000005498                __utee_check_gp11_outbuf_annotation
-                0x00000000000054e4                __utee_check_instring_annotation
-                0x0000000000005514                __utee_check_outstring_annotation
-                0x0000000000005560                __utee_check_gp11_outstring_annotation
-                0x00000000000055ac                __utee_check_out_annotation
-                0x00000000000055cc                __utee_check_attr_in_annotation
-                0x00000000000055f0                __utee_check_gp11_attr_in_annotation
-                0x0000000000005614                __utee_check_inout_annotation
- .text          0x0000000000005634      0xf78 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
-                0x00000000000059c4                TEE_GetPropertyAsString
-                0x0000000000005c20                __GP11_TEE_GetPropertyAsString
-                0x0000000000005cb8                TEE_GetPropertyAsBool
-                0x0000000000005d90                TEE_GetPropertyAsU32
-                0x0000000000005e78                TEE_GetPropertyAsU64
-                0x0000000000005f60                __GP11_TEE_GetPropertyAsBinaryBlock
-                0x000000000000604c                TEE_GetPropertyAsBinaryBlock
-                0x00000000000060e4                TEE_GetPropertyAsUUID
-                0x00000000000061cc                TEE_GetPropertyAsIdentity
-                0x00000000000062b4                TEE_ResetPropertyEnumerator
-                0x00000000000062c0                TEE_AllocatePropertyEnumerator
-                0x0000000000006308                TEE_FreePropertyEnumerator
-                0x000000000000630c                TEE_StartPropertyEnumerator
-                0x000000000000631c                __GP11_TEE_GetPropertyName
-                0x0000000000006444                TEE_GetPropertyName
-                0x00000000000064cc                TEE_GetNextProperty
- .text          0x00000000000065ac      0x310 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
-                0x0000000000006634                tee_map_zi
-                0x00000000000066e4                tee_unmap
-                0x00000000000067ac                tee_invoke_supp_plugin
- .text          0x00000000000068bc      0x34c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
-                0x00000000000068bc                __utee_tcb_init
-                0x0000000000006afc                __tls_get_addr
-                0x0000000000006b18                dl_iterate_phdr
- .text          0x0000000000006c08       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
-                0x0000000000006c08                _assert_log
-                0x0000000000006c4c                _assert_break
- .text          0x0000000000006c60      0x258 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
-                0x0000000000006c60                _base64_enc_len
-                0x0000000000006c78                _base64_enc
-                0x0000000000006d94                _base64_dec
- .text          0x0000000000006eb8     0x4190 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
-                0x000000000000768c                mbedtls_mpi_init
-                0x000000000000769c                mbedtls_mpi_init_mempool
-                0x00000000000076c4                mbedtls_mpi_free
-                0x0000000000007730                mbedtls_mpi_grow
-                0x0000000000007884                mbedtls_mpi_shrink
-                0x00000000000079a4                mbedtls_mpi_copy
-                0x0000000000007a70                mbedtls_mpi_swap
-                0x0000000000007af8                mbedtls_mpi_lset
-                0x0000000000007b60                mbedtls_mpi_get_bit
-                0x0000000000007b8c                mbedtls_mpi_set_bit
-                0x0000000000007c18                mbedtls_mpi_lsb
-                0x0000000000007c6c                mbedtls_mpi_bitlen
-                0x0000000000007cc8                mbedtls_mpi_size
-                0x0000000000007ce4                mbedtls_mpi_read_binary_le
-                0x0000000000007d5c                mbedtls_mpi_read_binary
-                0x0000000000007de0                mbedtls_mpi_write_binary_le
-                0x0000000000007e98                mbedtls_mpi_write_binary
-                0x0000000000007f5c                mbedtls_mpi_shift_l
-                0x000000000000806c                mbedtls_mpi_shift_r
-                0x000000000000812c                mbedtls_mpi_cmp_abs
-                0x00000000000081c8                mbedtls_mpi_cmp_mpi
-                0x000000000000829c                mbedtls_mpi_cmp_int
-                0x0000000000008310                mbedtls_mpi_add_abs
-                0x0000000000008430                mbedtls_mpi_sub_abs
-                0x000000000000858c                mbedtls_mpi_add_mpi
-                0x0000000000008614                mbedtls_mpi_sub_mpi
-                0x00000000000086a0                mbedtls_mpi_add_int
-                0x0000000000008714                mbedtls_mpi_sub_int
-                0x0000000000008788                mbedtls_mpi_mul_mpi
-                0x0000000000008934                mbedtls_mpi_mul_int
-                0x00000000000089dc                mbedtls_mpi_read_string
-                0x0000000000008be8                mbedtls_mpi_div_mpi
-                0x000000000000911c                mbedtls_mpi_div_int
-                0x0000000000009190                mbedtls_mpi_mod_mpi
-                0x0000000000009244                mbedtls_mpi_mod_int
-                0x00000000000092e0                mbedtls_mpi_write_string
-                0x0000000000009614                mbedtls_mpi_montg_init
-                0x000000000000961c                mbedtls_mpi_montmul
-                0x0000000000009624                mbedtls_mpi_montred
-                0x0000000000009628                mbedtls_mpi_exp_mod
-                0x0000000000009cf4                mbedtls_mpi_gcd
-                0x0000000000009ecc                mbedtls_mpi_fill_random
-                0x000000000000a1d8                mbedtls_mpi_random
-                0x000000000000a390                mbedtls_mpi_inv_mod
-                0x000000000000a7e8                mbedtls_mpi_is_prime_ext
-                0x000000000000a8c4                mbedtls_mpi_is_prime
-                0x000000000000a8d4                mbedtls_mpi_gen_prime
-                0x000000000000ac20                mbedtls_mpi_self_test
- .text          0x000000000000b048      0x7c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
-                0x000000000000b068                mbedtls_ct_memcmp
-                0x000000000000b0b0                mbedtls_ct_uint_mask
-                0x000000000000b0c0                mbedtls_ct_mpi_uint_mask
-                0x000000000000b0d0                mbedtls_ct_size_bool_eq
-                0x000000000000b0e8                mbedtls_ct_mpi_uint_lt
-                0x000000000000b104                mbedtls_ct_uint_if
-                0x000000000000b134                mbedtls_ct_mpi_uint_cond_assign
-                0x000000000000b170                mbedtls_ct_base64_enc_char
-                0x000000000000b220                mbedtls_ct_base64_dec_value
-                0x000000000000b2dc                mbedtls_mpi_safe_cond_assign
-                0x000000000000b398                mbedtls_mpi_safe_cond_swap
-                0x000000000000b494                mbedtls_mpi_lt_mpi_ct
-                0x000000000000b58c                mbedtls_ct_rsaes_pkcs1_v15_unpadding
- .text          0x000000000000b808       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
-                0x000000000000b808                mbedtls_platform_zeroize
- .text          0x000000000000b828      0xd00 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
-                0x000000000000b860                bget
-                0x000000000000bb28                bgetz
-                0x000000000000bbb0                brel
-                0x000000000000be34                bgetr
-                0x000000000000bf04                bpool
-                0x000000000000bfd4                raw_memalign
-                0x000000000000c028                raw_malloc
-                0x000000000000c038                raw_free
-                0x000000000000c048                raw_calloc
-                0x000000000000c098                raw_realloc
-                0x000000000000c180                malloc
-                0x000000000000c198                calloc
-                0x000000000000c1b4                realloc
-                0x000000000000c1cc                memalign
-                0x000000000000c1e8                aligned_alloc
-                0x000000000000c200                free
-                0x000000000000c210                free_wipe
-                0x000000000000c220                raw_malloc_get_ctx_size
-                0x000000000000c228                raw_malloc_init_ctx
-                0x000000000000c254                raw_malloc_add_pool
-                0x000000000000c31c                raw_malloc_buffer_overlaps_heap
-                0x000000000000c39c                raw_malloc_buffer_is_within_alloced
-                0x000000000000c4ec                malloc_add_pool
-                0x000000000000c500                malloc_buffer_is_within_alloced
-                0x000000000000c514                malloc_buffer_overlaps_heap
- .text          0x000000000000c528      0x128 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
-                0x000000000000c528                snprintf
-                0x000000000000c5f8                vsnprintf
- .text          0x000000000000c650       0x5c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
-                0x000000000000c650                memmove
- .text          0x000000000000c6ac       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
-                0x000000000000c6ac                memset
- .text          0x000000000000c6c8       0x24 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
-                0x000000000000c6c8                strcmp
- .text          0x000000000000c6ec       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
-                0x000000000000c6ec                strlcpy
- .text          0x000000000000c744      0x190 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
-                0x000000000000c744                mempool_alloc_pool
-                0x000000000000c80c                mempool_alloc
-                0x000000000000c870                mempool_calloc
-                0x000000000000c8c0                mempool_free
- .text          0x000000000000c8d4       0x70 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
-                0x000000000000c8d4                consttime_memcmp
- .text          0x000000000000c944        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .text          0x000000000000c944        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002220                _utee_cryp_obj_populate
+ .text._utee_cryp_obj_copy
+                0x000000000000222c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x000000000000222c                _utee_cryp_obj_copy
+ .text._utee_cryp_derive_key
+                0x0000000000002238        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002238                _utee_cryp_derive_key
+ .text._utee_cryp_random_number_generate
+                0x0000000000002244        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002244                _utee_cryp_random_number_generate
+ .text._utee_authenc_init
+                0x0000000000002250        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002250                _utee_authenc_init
+ .text._utee_authenc_update_aad
+                0x000000000000225c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x000000000000225c                _utee_authenc_update_aad
+ .text._utee_authenc_update_payload
+                0x0000000000002268        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002268                _utee_authenc_update_payload
+ .text._utee_authenc_enc_final
+                0x0000000000002274        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002274                _utee_authenc_enc_final
+ .text._utee_authenc_dec_final
+                0x0000000000002280        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002280                _utee_authenc_dec_final
+ .text._utee_asymm_operate
+                0x000000000000228c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x000000000000228c                _utee_asymm_operate
+ .text._utee_asymm_verify
+                0x0000000000002298        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002298                _utee_asymm_verify
+ .text._utee_storage_obj_open
+                0x00000000000022a4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022a4                _utee_storage_obj_open
+ .text._utee_storage_obj_create
+                0x00000000000022b0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022b0                _utee_storage_obj_create
+ .text._utee_storage_obj_del
+                0x00000000000022bc        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022bc                _utee_storage_obj_del
+ .text._utee_storage_obj_rename
+                0x00000000000022c8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022c8                _utee_storage_obj_rename
+ .text._utee_storage_alloc_enum
+                0x00000000000022d4        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022d4                _utee_storage_alloc_enum
+ .text._utee_storage_free_enum
+                0x00000000000022e0        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022e0                _utee_storage_free_enum
+ .text._utee_storage_reset_enum
+                0x00000000000022ec        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022ec                _utee_storage_reset_enum
+ .text._utee_storage_start_enum
+                0x00000000000022f8        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x00000000000022f8                _utee_storage_start_enum
+ .text._utee_storage_next_enum
+                0x0000000000002304        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002304                _utee_storage_next_enum
+ .text._utee_storage_obj_read
+                0x0000000000002310        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002310                _utee_storage_obj_read
+ .text._utee_storage_obj_write
+                0x000000000000231c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x000000000000231c                _utee_storage_obj_write
+ .text._utee_storage_obj_trunc
+                0x0000000000002328        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002328                _utee_storage_obj_trunc
+ .text._utee_storage_obj_seek
+                0x0000000000002334        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002334                _utee_storage_obj_seek
+ .text._utee_cryp_obj_generate_key
+                0x0000000000002340        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x0000000000002340                _utee_cryp_obj_generate_key
+ .text._utee_cache_operation
+                0x000000000000234c        0xc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+                0x000000000000234c                _utee_cache_operation
+ .text.unlikely
+                0x0000000000002358       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                0x0000000000002358                abort
+ .text          0x0000000000002378     0x10c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+                0x0000000000002728                TEE_CloseTASession
+                0x0000000000002750                TEE_GetCancellationFlag
+                0x00000000000027b0                TEE_UnmaskCancellation
+                0x0000000000002810                TEE_MaskCancellation
+                0x0000000000002870                TEE_CheckMemoryAccessRights
+                0x0000000000002a94                TEE_OpenTASession
+                0x0000000000002be8                __GP11_TEE_OpenTASession
+                0x0000000000002d30                TEE_InvokeTACommand
+                0x0000000000002eb4                __GP11_TEE_InvokeTACommand
+                0x000000000000302c                __GP11_TEE_CheckMemoryAccessRights
+                0x0000000000003034                TEE_SetInstanceData
+                0x0000000000003040                TEE_GetInstanceData
+                0x000000000000304c                TEE_MemMove
+                0x0000000000003050                __GP11_TEE_MemMove
+                0x0000000000003058                TEE_MemCompare
+                0x000000000000305c                __GP11_TEE_MemCompare
+                0x0000000000003064                TEE_MemFill
+                0x0000000000003068                __GP11_TEE_MemFill
+                0x0000000000003070                TEE_GetSystemTime
+                0x0000000000003098                TEE_Wait
+                0x00000000000030d4                TEE_GetTAPersistentTime
+                0x0000000000003148                TEE_SetTAPersistentTime
+                0x000000000000318c                TEE_GetREETime
+                0x00000000000031b4                TEE_Malloc
+                0x00000000000032d8                __GP11_TEE_Malloc
+                0x00000000000032e0                TEE_Free
+                0x0000000000003340                TEE_Realloc
+                0x0000000000003418                __GP11_TEE_Realloc
+                0x0000000000003420                TEE_CacheClean
+                0x0000000000003428                TEE_CacheFlush
+                0x0000000000003430                TEE_CacheInvalidate
+ .text          0x0000000000003438     0x212c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+                0x0000000000003c9c                _TEE_MathAPI_Init
+                0x0000000000003cec                TEE_BigIntInit
+                0x0000000000003d4c                __GP11_TEE_BigIntInit
+                0x0000000000003d54                TEE_BigIntConvertFromOctetString
+                0x0000000000003e1c                __GP11_TEE_BigIntConvertFromOctetString
+                0x0000000000003e24                TEE_BigIntConvertToOctetString
+                0x0000000000003eec                __GP11_TEE_BigIntConvertToOctetString
+                0x0000000000003f4c                TEE_BigIntConvertFromS32
+                0x0000000000003ffc                TEE_BigIntConvertToS32
+                0x00000000000040b8                TEE_BigIntCmp
+                0x000000000000414c                TEE_BigIntCmpS32
+                0x0000000000004398                TEE_BigIntShiftRight
+                0x0000000000004538                __GP11_TEE_BigIntShiftRight
+                0x0000000000004540                TEE_BigIntGetBit
+                0x00000000000045c0                TEE_BigIntGetBitCount
+                0x0000000000004634                TEE_BigIntSetBit
+                0x00000000000046e4                TEE_BigIntAssign
+                0x0000000000004734                TEE_BigIntAbs
+                0x0000000000004760                TEE_BigIntAdd
+                0x000000000000476c                TEE_BigIntSub
+                0x0000000000004778                TEE_BigIntNeg
+                0x000000000000485c                TEE_BigIntMul
+                0x0000000000004970                TEE_BigIntSquare
+                0x0000000000004978                TEE_BigIntDiv
+                0x0000000000004b2c                TEE_BigIntMod
+                0x0000000000004b98                TEE_BigIntAddMod
+                0x0000000000004ba4                TEE_BigIntSubMod
+                0x0000000000004bb0                TEE_BigIntMulMod
+                0x0000000000004bbc                TEE_BigIntSquareMod
+                0x0000000000004bc8                TEE_BigIntInvMod
+                0x0000000000004d18                TEE_BigIntRelativePrime
+                0x0000000000004e20                TEE_BigIntExpMod
+                0x0000000000004ff4                TEE_BigIntComputeExtendedGcd
+                0x000000000000525c                TEE_BigIntIsProbablePrime
+                0x00000000000052e0                TEE_BigIntInitFMM
+                0x00000000000052e4                __GP11_TEE_BigIntInitFMM
+                0x00000000000052ec                TEE_BigIntInitFMMContext
+                0x00000000000052f0                __GP11_TEE_BigIntInitFMMContext
+                0x00000000000052f8                TEE_BigIntInitFMMContext1
+                0x0000000000005300                TEE_BigIntFMMSizeInU32
+                0x0000000000005310                __GP11_TEE_BigIntFMMSizeInU32
+                0x0000000000005328                TEE_BigIntFMMContextSizeInU32
+                0x0000000000005330                __GP11_TEE_BigIntFMMContextSizeInU32
+                0x0000000000005348                TEE_BigIntConvertToFMM
+                0x000000000000534c                TEE_BigIntConvertFromFMM
+                0x000000000000541c                TEE_BigIntComputeFMM
+ .text          0x0000000000005564      0x21c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+                0x0000000000005580                TEE_Panic
+                0x0000000000005598                __utee_check_outbuf_annotation
+                0x00000000000055e4                __utee_check_gp11_outbuf_annotation
+                0x0000000000005630                __utee_check_instring_annotation
+                0x0000000000005660                __utee_check_outstring_annotation
+                0x00000000000056ac                __utee_check_gp11_outstring_annotation
+                0x00000000000056f8                __utee_check_out_annotation
+                0x0000000000005718                __utee_check_attr_in_annotation
+                0x000000000000573c                __utee_check_gp11_attr_in_annotation
+                0x0000000000005760                __utee_check_inout_annotation
+ .text          0x0000000000005780      0xf78 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+                0x0000000000005b10                TEE_GetPropertyAsString
+                0x0000000000005d6c                __GP11_TEE_GetPropertyAsString
+                0x0000000000005e04                TEE_GetPropertyAsBool
+                0x0000000000005edc                TEE_GetPropertyAsU32
+                0x0000000000005fc4                TEE_GetPropertyAsU64
+                0x00000000000060ac                __GP11_TEE_GetPropertyAsBinaryBlock
+                0x0000000000006198                TEE_GetPropertyAsBinaryBlock
+                0x0000000000006230                TEE_GetPropertyAsUUID
+                0x0000000000006318                TEE_GetPropertyAsIdentity
+                0x0000000000006400                TEE_ResetPropertyEnumerator
+                0x000000000000640c                TEE_AllocatePropertyEnumerator
+                0x0000000000006454                TEE_FreePropertyEnumerator
+                0x0000000000006458                TEE_StartPropertyEnumerator
+                0x0000000000006468                __GP11_TEE_GetPropertyName
+                0x0000000000006590                TEE_GetPropertyName
+                0x0000000000006618                TEE_GetNextProperty
+ .text          0x00000000000066f8      0x310 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+                0x0000000000006780                tee_map_zi
+                0x0000000000006830                tee_unmap
+                0x00000000000068f8                tee_invoke_supp_plugin
+ .text          0x0000000000006a08      0x34c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+                0x0000000000006a08                __utee_tcb_init
+                0x0000000000006c48                __tls_get_addr
+                0x0000000000006c64                dl_iterate_phdr
+ .text          0x0000000000006d54       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+                0x0000000000006d54                _assert_log
+                0x0000000000006d98                _assert_break
+ .text          0x0000000000006dac      0x258 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+                0x0000000000006dac                _base64_enc_len
+                0x0000000000006dc4                _base64_enc
+                0x0000000000006ee0                _base64_dec
+ .text          0x0000000000007004     0x4190 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+                0x00000000000077d8                mbedtls_mpi_init
+                0x00000000000077e8                mbedtls_mpi_init_mempool
+                0x0000000000007810                mbedtls_mpi_free
+                0x000000000000787c                mbedtls_mpi_grow
+                0x00000000000079d0                mbedtls_mpi_shrink
+                0x0000000000007af0                mbedtls_mpi_copy
+                0x0000000000007bbc                mbedtls_mpi_swap
+                0x0000000000007c44                mbedtls_mpi_lset
+                0x0000000000007cac                mbedtls_mpi_get_bit
+                0x0000000000007cd8                mbedtls_mpi_set_bit
+                0x0000000000007d64                mbedtls_mpi_lsb
+                0x0000000000007db8                mbedtls_mpi_bitlen
+                0x0000000000007e14                mbedtls_mpi_size
+                0x0000000000007e30                mbedtls_mpi_read_binary_le
+                0x0000000000007ea8                mbedtls_mpi_read_binary
+                0x0000000000007f2c                mbedtls_mpi_write_binary_le
+                0x0000000000007fe4                mbedtls_mpi_write_binary
+                0x00000000000080a8                mbedtls_mpi_shift_l
+                0x00000000000081b8                mbedtls_mpi_shift_r
+                0x0000000000008278                mbedtls_mpi_cmp_abs
+                0x0000000000008314                mbedtls_mpi_cmp_mpi
+                0x00000000000083e8                mbedtls_mpi_cmp_int
+                0x000000000000845c                mbedtls_mpi_add_abs
+                0x000000000000857c                mbedtls_mpi_sub_abs
+                0x00000000000086d8                mbedtls_mpi_add_mpi
+                0x0000000000008760                mbedtls_mpi_sub_mpi
+                0x00000000000087ec                mbedtls_mpi_add_int
+                0x0000000000008860                mbedtls_mpi_sub_int
+                0x00000000000088d4                mbedtls_mpi_mul_mpi
+                0x0000000000008a80                mbedtls_mpi_mul_int
+                0x0000000000008b28                mbedtls_mpi_read_string
+                0x0000000000008d34                mbedtls_mpi_div_mpi
+                0x0000000000009268                mbedtls_mpi_div_int
+                0x00000000000092dc                mbedtls_mpi_mod_mpi
+                0x0000000000009390                mbedtls_mpi_mod_int
+                0x000000000000942c                mbedtls_mpi_write_string
+                0x0000000000009760                mbedtls_mpi_montg_init
+                0x0000000000009768                mbedtls_mpi_montmul
+                0x0000000000009770                mbedtls_mpi_montred
+                0x0000000000009774                mbedtls_mpi_exp_mod
+                0x0000000000009e40                mbedtls_mpi_gcd
+                0x000000000000a018                mbedtls_mpi_fill_random
+                0x000000000000a324                mbedtls_mpi_random
+                0x000000000000a4dc                mbedtls_mpi_inv_mod
+                0x000000000000a934                mbedtls_mpi_is_prime_ext
+                0x000000000000aa10                mbedtls_mpi_is_prime
+                0x000000000000aa20                mbedtls_mpi_gen_prime
+                0x000000000000ad6c                mbedtls_mpi_self_test
+ .text          0x000000000000b194      0x7c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+                0x000000000000b1b4                mbedtls_ct_memcmp
+                0x000000000000b1fc                mbedtls_ct_uint_mask
+                0x000000000000b20c                mbedtls_ct_mpi_uint_mask
+                0x000000000000b21c                mbedtls_ct_size_bool_eq
+                0x000000000000b234                mbedtls_ct_mpi_uint_lt
+                0x000000000000b250                mbedtls_ct_uint_if
+                0x000000000000b280                mbedtls_ct_mpi_uint_cond_assign
+                0x000000000000b2bc                mbedtls_ct_base64_enc_char
+                0x000000000000b36c                mbedtls_ct_base64_dec_value
+                0x000000000000b428                mbedtls_mpi_safe_cond_assign
+                0x000000000000b4e4                mbedtls_mpi_safe_cond_swap
+                0x000000000000b5e0                mbedtls_mpi_lt_mpi_ct
+                0x000000000000b6d8                mbedtls_ct_rsaes_pkcs1_v15_unpadding
+ .text          0x000000000000b954       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+                0x000000000000b954                mbedtls_platform_zeroize
+ .text          0x000000000000b974      0xd00 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+                0x000000000000b9ac                bget
+                0x000000000000bc74                bgetz
+                0x000000000000bcfc                brel
+                0x000000000000bf80                bgetr
+                0x000000000000c050                bpool
+                0x000000000000c120                raw_memalign
+                0x000000000000c174                raw_malloc
+                0x000000000000c184                raw_free
+                0x000000000000c194                raw_calloc
+                0x000000000000c1e4                raw_realloc
+                0x000000000000c2cc                malloc
+                0x000000000000c2e4                calloc
+                0x000000000000c300                realloc
+                0x000000000000c318                memalign
+                0x000000000000c334                aligned_alloc
+                0x000000000000c34c                free
+                0x000000000000c35c                free_wipe
+                0x000000000000c36c                raw_malloc_get_ctx_size
+                0x000000000000c374                raw_malloc_init_ctx
+                0x000000000000c3a0                raw_malloc_add_pool
+                0x000000000000c468                raw_malloc_buffer_overlaps_heap
+                0x000000000000c4e8                raw_malloc_buffer_is_within_alloced
+                0x000000000000c638                malloc_add_pool
+                0x000000000000c64c                malloc_buffer_is_within_alloced
+                0x000000000000c660                malloc_buffer_overlaps_heap
+ .text          0x000000000000c674      0x128 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+                0x000000000000c674                snprintf
+                0x000000000000c744                vsnprintf
+ .text          0x000000000000c79c       0x5c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+                0x000000000000c79c                memmove
+ .text          0x000000000000c7f8       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+                0x000000000000c7f8                memset
+ .text          0x000000000000c814       0x24 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+                0x000000000000c814                strcmp
+ .text          0x000000000000c838       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+                0x000000000000c838                strlcpy
+ .text          0x000000000000c890      0x190 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+                0x000000000000c890                mempool_alloc_pool
+                0x000000000000c958                mempool_alloc
+                0x000000000000c9bc                mempool_calloc
+                0x000000000000ca0c                mempool_free
+ .text          0x000000000000ca20       0x70 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+                0x000000000000ca20                consttime_memcmp
+ .text          0x000000000000ca90        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .text          0x000000000000ca90        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  *(SORT_BY_ALIGNMENT(.stub))
  *(SORT_BY_ALIGNMENT(.glue_7))
  *(SORT_BY_ALIGNMENT(.glue_7t))
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.t.*))
  *(SORT_BY_ALIGNMENT(.vfp11_veneer))
-                0x000000000000c944                __text_end = .
+                0x000000000000ca90                __text_end = .
 
 .note.gnu.property
  *(SORT_BY_ALIGNMENT(.note.gnu.property))
 
-.plt            0x000000000000c944        0x0
+.plt            0x000000000000ca90        0x0
  *(SORT_BY_ALIGNMENT(.plt))
- .plt           0x000000000000c944        0x0 ./hello_world_ta.o
+ .plt           0x000000000000ca90        0x0 ./hello_world_ta.o
 
 .eh_frame_hdr
  *(SORT_BY_ALIGNMENT(.eh_frame_hdr))
  *(SORT_BY_ALIGNMENT(.eh_frame_entry) SORT_BY_ALIGNMENT(.eh_frame_entry.*))
 
-.eh_frame       0x000000000000c948     0x2924
+.eh_frame       0x000000000000ca90     0x2954
  *(SORT_BY_ALIGNMENT(.eh_frame))
- .eh_frame      0x000000000000c948       0xa0 ./hello_world_ta.o
- .eh_frame      0x000000000000c9e8       0x18 ./include/common/libmin_abs.o
+ .eh_frame      0x000000000000ca90       0xb8 ./hello_world_ta.o
+ .eh_frame      0x000000000000cb48       0x18 ./include/common/libmin_abs.o
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000ca00       0x58 ./user_ta_header.o
+ .eh_frame      0x000000000000cb60       0x18 ./include/common/libmin_strlen.o
+                                         0x28 (size before relaxing)
+ .eh_frame      0x000000000000cb78       0x58 ./user_ta_header.o
                                          0x68 (size before relaxing)
- .eh_frame      0x000000000000ca58       0xb8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .eh_frame      0x000000000000cbd0       0xb8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
                                          0xc8 (size before relaxing)
- .eh_frame      0x000000000000cb10       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .eh_frame      0x000000000000cc88       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
                                          0x30 (size before relaxing)
- .eh_frame      0x000000000000cb28       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .eh_frame      0x000000000000cca0       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000cb40       0xf0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .eh_frame      0x000000000000ccb8       0xf0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
                                         0x100 (size before relaxing)
- .eh_frame      0x000000000000cc30       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .eh_frame      0x000000000000cda8       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000cc48       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .eh_frame      0x000000000000cdc0       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000cc60       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
-                                         0x30 (size before relaxing)
- .eh_frame      0x000000000000cc78       0xa8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .eh_frame      0x000000000000cdd8       0xa8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
                                          0xc0 (size before relaxing)
- .eh_frame      0x000000000000cd20      0x150 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .eh_frame      0x000000000000ce80      0x150 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
                                         0x168 (size before relaxing)
- .eh_frame      0x000000000000ce70       0x98 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .eh_frame      0x000000000000cfd0       0x98 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
                                          0xa8 (size before relaxing)
- .eh_frame      0x000000000000cf08      0x588 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .eh_frame      0x000000000000d068       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                                         0x30 (size before relaxing)
+ .eh_frame      0x000000000000d080      0x588 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
                                         0x5a0 (size before relaxing)
- .eh_frame      0x000000000000d490      0x7d0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .eh_frame      0x000000000000d608      0x7d0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
                                         0x7e0 (size before relaxing)
- .eh_frame      0x000000000000dc60      0x180 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .eh_frame      0x000000000000ddd8      0x180 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
                                         0x198 (size before relaxing)
- .eh_frame      0x000000000000dde0      0x2f8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .eh_frame      0x000000000000df58      0x2f8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
                                         0x308 (size before relaxing)
- .eh_frame      0x000000000000e0d8       0xc0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .eh_frame      0x000000000000e250       0xc0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
                                          0xd0 (size before relaxing)
- .eh_frame      0x000000000000e198       0x90 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .eh_frame      0x000000000000e310       0x90 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
                                          0xa8 (size before relaxing)
- .eh_frame      0x000000000000e228       0x38 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .eh_frame      0x000000000000e3a0       0x38 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
                                          0x50 (size before relaxing)
- .eh_frame      0x000000000000e260       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .eh_frame      0x000000000000e3d8       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
                                          0x70 (size before relaxing)
- .eh_frame      0x000000000000e2b8      0x988 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .eh_frame      0x000000000000e430      0x988 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
                                         0x9a0 (size before relaxing)
- .eh_frame      0x000000000000ec40      0x1e0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .eh_frame      0x000000000000edb8      0x1e0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
                                         0x1f8 (size before relaxing)
- .eh_frame      0x000000000000ee20       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .eh_frame      0x000000000000ef98       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000ee38      0x2d8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .eh_frame      0x000000000000efb0      0x2d8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
                                         0x2e8 (size before relaxing)
- .eh_frame      0x000000000000f110       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .eh_frame      0x000000000000f288       0x58 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
                                          0x68 (size before relaxing)
- .eh_frame      0x000000000000f168       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .eh_frame      0x000000000000f2e0       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000f180       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .eh_frame      0x000000000000f2f8       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000f198       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .eh_frame      0x000000000000f310       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000f1b0       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .eh_frame      0x000000000000f328       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
                                          0x28 (size before relaxing)
- .eh_frame      0x000000000000f1c8       0x88 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .eh_frame      0x000000000000f340       0x88 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
                                          0xa0 (size before relaxing)
- .eh_frame      0x000000000000f250       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+ .eh_frame      0x000000000000f3c8       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
                                          0x30 (size before relaxing)
  *(SORT_BY_ALIGNMENT(.eh_frame.*))
 
 .gcc_except_table
  *(SORT_BY_ALIGNMENT(.gcc_except_table) SORT_BY_ALIGNMENT(.gcc_except_table.*))
 
-.rodata         0x000000000000f270     0x12eb
+.rodata         0x000000000000f3e8     0x133e
  *(SORT_BY_ALIGNMENT(.gnu.linkonce.r.*))
  *(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*))
  .rodata.user_ta_header.c
-                0x000000000000f270       0x33 ./user_ta_header.o
-                0x000000000000f270                ta_num_props
-                0x000000000000f290                __ta_no_share_heap_size
-                0x000000000000f298                ta_heap_size
-                0x000000000000f2a0                trace_ext_prefix
- *fill*         0x000000000000f2a3        0x5 
+                0x000000000000f3e8       0x33 ./user_ta_header.o
+                0x000000000000f3e8                ta_num_props
+                0x000000000000f408                __ta_no_share_heap_size
+                0x000000000000f410                ta_heap_size
+                0x000000000000f418                trace_ext_prefix
+ *fill*         0x000000000000f41b        0x5 
  .rodata.lib/libutee/tee_api.c
-                0x000000000000f2a8       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+                0x000000000000f420       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .rodata.lib/libutils/ext/snprintk.c
-                0x000000000000f2c8       0xac /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+                0x000000000000f440       0xac /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .rodata.lib/libutee/tee_api_property.c
-                0x000000000000f374       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+                0x000000000000f4ec       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
  .rodata.lib/libutee/tee_system_pta.c
-                0x000000000000f394       0x31 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- *fill*         0x000000000000f3c5        0x3 
+                0x000000000000f50c       0x31 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ *fill*         0x000000000000f53d        0x3 
  .rodata.lib/libutee/base64.c
-                0x000000000000f3c8       0x45 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- *fill*         0x000000000000f40d        0x3 
+                0x000000000000f540       0x45 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ *fill*         0x000000000000f585        0x3 
  .rodata.lib/libmbedtls/mbedtls/library/bignum.c
-                0x000000000000f410      0x2c4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+                0x000000000000f588      0x2c4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
  .rodata.str1.1.hello_world_ta.c
-                0x000000000000f6d4       0x28 ./hello_world_ta.o
+                0x000000000000f84c       0x6a ./hello_world_ta.o
  .rodata.hello_world_ta.c
-                0x000000000000f6fc       0x63 ./hello_world_ta.o
+                0x000000000000f8b6       0x77 ./hello_world_ta.o
  .rodata.str1.1.user_ta_header.c
-                0x000000000000f75f      0x15f ./user_ta_header.o
+                0x000000000000f92d      0x15f ./user_ta_header.o
  .rodata.str1.1.lib/libutils/ext/trace.c
-                0x000000000000f8be       0x1a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+                0x000000000000fa8c       0x1a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
                                          0x1b (size before relaxing)
  .rodata.lib/libutils/ext/trace.c
-                0x000000000000f8d8        0x5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+                0x000000000000faa6        0x5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
  .rodata.str1.1.lib/libutils/isoc/stack_check.c
-                0x000000000000f8dd       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+                0x000000000000faab       0x18 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
  .rodata.str1.1.lib/libutils/ext/snprintk.c
-                0x000000000000f8f5       0x38 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .rodata.str1.1.lib/libutee/abort.c
-                0x000000000000f92d        0x7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                0x000000000000fac3       0x38 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .rodata.str1.1.lib/libutee/trace_ext.c
-                0x000000000000f934        0x7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+                0x000000000000fafb       0x38 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
                                           0x2 (size before relaxing)
  .rodata.str1.1.lib/libutee/user_ta_entry.c
-                0x000000000000f934       0x4f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+                0x000000000000fafb       0x4f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
  .rodata.lib/libutee/user_ta_entry.c
-                0x000000000000f983       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+                0x000000000000fb4a       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .rodata.str1.1.lib/libutee/abort.c
+                0x000000000000fb60        0x7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .rodata.str1.1.lib/libutee/tee_api.c
-                0x000000000000f999       0x11 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+                0x000000000000fb67       0x11 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .rodata.str1.1.lib/libutee/tee_api_arith_mpi.c
-                0x000000000000f9aa       0xc9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+                0x000000000000fb78       0xc9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .rodata.lib/libutee/tee_api_arith_mpi.c
-                0x000000000000fa73      0x14e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+                0x000000000000fc41      0x14e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .rodata.str1.1.lib/libutee/tee_api_property.c
-                0x000000000000fbc1       0x83 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+                0x000000000000fd8f       0x80 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
                                          0x88 (size before relaxing)
  .rodata.str1.1.lib/libutee/tee_system_pta.c
-                0x000000000000fc44       0x55 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+                0x000000000000fe0f       0x55 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
  .rodata.str1.1.lib/libutee/tcb.c
-                0x000000000000fc99       0x8d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+                0x000000000000fe64       0x8d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
  .rodata.lib/libutee/tcb.c
-                0x000000000000fd26       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+                0x000000000000fef1       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
  .rodata.str1.1.lib/libutee/assert.c
-                0x000000000000fd46       0x27 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+                0x000000000000ff11       0x27 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
  .rodata.str1.1.lib/libmbedtls/mbedtls/library/bignum.c
-                0x000000000000fd6d      0x456 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+                0x000000000000ff38      0x456 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
                                         0x45d (size before relaxing)
  .rodata.str1.1.lib/libutils/isoc/bget_malloc.c
-                0x00000000000101c3      0x292 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+                0x000000000001038e      0x292 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
                                         0x29b (size before relaxing)
  .rodata.lib/libutils/isoc/bget_malloc.c
-                0x0000000000010455       0x51 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+                0x0000000000010620       0x51 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
  .rodata.str1.1.lib/libutils/ext/mempool.c
-                0x00000000000104a6       0x89 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+                0x0000000000010671       0x89 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
  .rodata.lib/libutils/ext/mempool.c
-                0x000000000001052f       0x2c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+                0x00000000000106fa       0x2c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
 
-.gnu.version_d  0x0000000000010560        0x0
+.gnu.version_d  0x0000000000010728        0x0
  .gnu.version_d
-                0x0000000000010560        0x0 ./hello_world_ta.o
+                0x0000000000010728        0x0 ./hello_world_ta.o
 
-.gnu.version    0x000000000001055c        0x0
- .gnu.version   0x000000000001055c        0x0 ./hello_world_ta.o
+.gnu.version    0x0000000000010726        0x0
+ .gnu.version   0x0000000000010726        0x0 ./hello_world_ta.o
 
-.gnu.version_r  0x0000000000010560        0x0
+.gnu.version_r  0x0000000000010728        0x0
  .gnu.version_r
-                0x0000000000010560        0x0 ./hello_world_ta.o
+                0x0000000000010728        0x0 ./hello_world_ta.o
 
-.gnu.hash       0x0000000000010560       0x30
- .gnu.hash      0x0000000000010560       0x30 ./hello_world_ta.o
+.gnu.hash       0x0000000000010728       0x30
+ .gnu.hash      0x0000000000010728       0x30 ./hello_world_ta.o
 
 .ARM.extab
  *(SORT_BY_ALIGNMENT(.ARM.extab*) SORT_BY_ALIGNMENT(.gnu.linkonce.armextab.*))
@@ -1518,28 +1530,28 @@ Linker script and memory map
 .dtors
  *(SORT_BY_ALIGNMENT(.dtors))
 
-.dynsym         0x0000000000010590       0x90
+.dynsym         0x0000000000010758       0x90
  *(SORT_BY_ALIGNMENT(.dynsym))
- .dynsym        0x0000000000010590       0x90 ./hello_world_ta.o
+ .dynsym        0x0000000000010758       0x90 ./hello_world_ta.o
 
-.dynstr         0x0000000000010620       0x2e
+.dynstr         0x00000000000107e8       0x2e
  *(SORT_BY_ALIGNMENT(.dynstr))
- .dynstr        0x0000000000010620       0x2e ./hello_world_ta.o
+ .dynstr        0x00000000000107e8       0x2e ./hello_world_ta.o
 
-.hash           0x0000000000010650       0x2c
+.hash           0x0000000000010818       0x2c
  *(SORT_BY_ALIGNMENT(.hash))
- .hash          0x0000000000010650       0x2c ./hello_world_ta.o
+ .hash          0x0000000000010818       0x2c ./hello_world_ta.o
 
-.rela.dyn       0x0000000000010680      0x348
+.rela.dyn       0x0000000000010848      0x348
  .rela.data.rel.ro
-                0x0000000000010680        0x0 ./hello_world_ta.o
- .rela.ifunc    0x0000000000010680        0x0 ./hello_world_ta.o
+                0x0000000000010848        0x0 ./hello_world_ta.o
+ .rela.ifunc    0x0000000000010848        0x0 ./hello_world_ta.o
  .rela.data.rel.ro.local
-                0x0000000000010680      0x2d0 ./hello_world_ta.o
+                0x0000000000010848      0x2d0 ./hello_world_ta.o
  .rela.data.rel.local
-                0x0000000000010950       0x60 ./hello_world_ta.o
+                0x0000000000010b18       0x60 ./hello_world_ta.o
  .rela.data.rel
-                0x00000000000109b0       0x18 ./hello_world_ta.o
+                0x0000000000010b78       0x18 ./hello_world_ta.o
                 0x0000000000011000                . = ALIGN (0x1000)
 
 .dynamic        0x0000000000011000      0x110
@@ -1665,16 +1677,17 @@ Linker script and memory map
  .data          0x00000000000115bc        0x0 ./hello_world_ta.o
  .data.rel.ro   0x00000000000115bc        0x0 ./hello_world_ta.o
  .data          0x00000000000115bc        0x0 ./include/common/libmin_abs.o
+ .data          0x00000000000115bc        0x0 ./include/common/libmin_strlen.o
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .data          0x00000000000115bc        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
@@ -1712,6 +1725,7 @@ Linker script and memory map
                 0x0000000000014e58                mbedtls_mpi_mempool
  .bss           0x0000000000014e60        0x0 ./hello_world_ta.o
  .bss           0x0000000000014e60        0x0 ./include/common/libmin_abs.o
+ .bss           0x0000000000014e60        0x0 ./include/common/libmin_strlen.o
  .bss           0x0000000000014e60     0x8000 ./user_ta_header.o
                 0x0000000000014e60                ta_heap
                 0x0000000000014e60                __ta_no_share_heap
@@ -1721,10 +1735,10 @@ Linker script and memory map
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
  .bss           0x000000000001ce60        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
@@ -1752,6 +1766,7 @@ Linker script and memory map
  *(SORT_BY_ALIGNMENT(.interp))
 LOAD ./hello_world_ta.o
 LOAD ./include/common/libmin_abs.o
+LOAD ./include/common/libmin_strlen.o
 LOAD ./user_ta_header.o
 START GROUP
 LOAD /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a
@@ -1764,106 +1779,110 @@ LOAD /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a
 OUTPUT(8aaaf200-2450-11e4-abe2-0002a5d5c51b.elf elf64-littleaarch64)
 LOAD linker stubs
 
-.debug_info     0x0000000000000000    0x1a21e
- .debug_info    0x0000000000000000      0x47d ./hello_world_ta.o
- .debug_info    0x000000000000047d       0xb8 ./include/common/libmin_abs.o
- .debug_info    0x0000000000000535      0x78f ./user_ta_header.o
- .debug_info    0x0000000000000cc4      0x6f0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_info    0x00000000000013b4      0x14c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_info    0x0000000000001500      0x13c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_info    0x000000000000163c      0x97c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_info    0x0000000000001fb8      0x106 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
- .debug_info    0x00000000000020be       0xbe /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .debug_info    0x000000000000217c      0x146 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_info    0x00000000000022c2      0x3f6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
- .debug_info    0x00000000000026b8     0x1825 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_info    0x0000000000003edd      0x58c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
- .debug_info    0x0000000000004469       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
- .debug_info    0x000000000000448b     0x27f8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
- .debug_info    0x0000000000006c83     0x516a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_info    0x000000000000bded      0xb05 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
- .debug_info    0x000000000000c8f2     0x1a1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_info    0x000000000000e30e      0x814 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_info    0x000000000000eb22      0x9f4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_info    0x000000000000f516      0x1f6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
- .debug_info    0x000000000000f70c      0x358 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- .debug_info    0x000000000000fa64     0x601f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_info    0x0000000000015a83     0x106a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_info    0x0000000000016aed      0x15b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_info    0x0000000000016c48     0x274f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_info    0x0000000000019397      0x2b5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
- .debug_info    0x000000000001964c      0x103 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
- .debug_info    0x000000000001974f       0xd6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
- .debug_info    0x0000000000019825       0xb7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
- .debug_info    0x00000000000198dc      0x12b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
- .debug_info    0x0000000000019a07      0x6dc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
- .debug_info    0x000000000001a0e3      0x13b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+.debug_info     0x0000000000000000    0x1a4fa
+ .debug_info    0x0000000000000000      0x671 ./hello_world_ta.o
+ .debug_info    0x0000000000000671       0xb8 ./include/common/libmin_abs.o
+ .debug_info    0x0000000000000729       0xe8 ./include/common/libmin_strlen.o
+ .debug_info    0x0000000000000811      0x78f ./user_ta_header.o
+ .debug_info    0x0000000000000fa0      0x6f0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_info    0x0000000000001690      0x14c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_info    0x00000000000017dc      0x13c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_info    0x0000000000001918      0x97c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_info    0x0000000000002294      0x106 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_info    0x000000000000239a       0xbe /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_info    0x0000000000002458      0x3f6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_info    0x000000000000284e     0x1825 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_info    0x0000000000004073      0x58c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_info    0x00000000000045ff       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_info    0x0000000000004621      0x146 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_info    0x0000000000004767     0x27f8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_info    0x0000000000006f5f     0x516a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_info    0x000000000000c0c9      0xb05 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_info    0x000000000000cbce     0x1a1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_info    0x000000000000e5ea      0x814 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_info    0x000000000000edfe      0x9f4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_info    0x000000000000f7f2      0x1f6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_info    0x000000000000f9e8      0x358 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_info    0x000000000000fd40     0x601f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_info    0x0000000000015d5f     0x106a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_info    0x0000000000016dc9      0x15b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_info    0x0000000000016f24     0x274f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_info    0x0000000000019673      0x2b5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_info    0x0000000000019928      0x103 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_info    0x0000000000019a2b       0xd6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_info    0x0000000000019b01       0xb7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_info    0x0000000000019bb8      0x12b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_info    0x0000000000019ce3      0x6dc /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_info    0x000000000001a3bf      0x13b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
 
-.debug_abbrev   0x0000000000000000     0x42ec
- .debug_abbrev  0x0000000000000000      0x1bb ./hello_world_ta.o
- .debug_abbrev  0x00000000000001bb       0x5b ./include/common/libmin_abs.o
- .debug_abbrev  0x0000000000000216      0x280 ./user_ta_header.o
- .debug_abbrev  0x0000000000000496      0x282 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_abbrev  0x0000000000000718       0xc5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_abbrev  0x00000000000007dd       0xb8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_abbrev  0x0000000000000895      0x2db /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_abbrev  0x0000000000000b70       0xb2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
- .debug_abbrev  0x0000000000000c22       0x87 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .debug_abbrev  0x0000000000000ca9       0xdd /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_abbrev  0x0000000000000d86      0x1b5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
- .debug_abbrev  0x0000000000000f3b      0x51d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_abbrev  0x0000000000001458      0x1c4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
- .debug_abbrev  0x000000000000161c       0x12 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
- .debug_abbrev  0x000000000000162e      0x4e6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
- .debug_abbrev  0x0000000000001b14      0x4f2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_abbrev  0x0000000000002006      0x1f9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
- .debug_abbrev  0x00000000000021ff      0x328 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_abbrev  0x0000000000002527      0x284 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_abbrev  0x00000000000027ab      0x2d5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_abbrev  0x0000000000002a80       0xef /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
- .debug_abbrev  0x0000000000002b6f      0x1a3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- .debug_abbrev  0x0000000000002d12      0x5ab /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_abbrev  0x00000000000032bd      0x38f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_abbrev  0x000000000000364c       0xdf /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_abbrev  0x000000000000372b      0x4c1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_abbrev  0x0000000000003bec      0x16c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
- .debug_abbrev  0x0000000000003d58       0xa4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
- .debug_abbrev  0x0000000000003dfc       0xa3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
- .debug_abbrev  0x0000000000003e9f       0x6f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
- .debug_abbrev  0x0000000000003f0e       0xa3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
- .debug_abbrev  0x0000000000003fb1      0x27b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
- .debug_abbrev  0x000000000000422c       0xc0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+.debug_abbrev   0x0000000000000000     0x43e7
+ .debug_abbrev  0x0000000000000000      0x22b ./hello_world_ta.o
+ .debug_abbrev  0x000000000000022b       0x5b ./include/common/libmin_abs.o
+ .debug_abbrev  0x0000000000000286       0x8b ./include/common/libmin_strlen.o
+ .debug_abbrev  0x0000000000000311      0x280 ./user_ta_header.o
+ .debug_abbrev  0x0000000000000591      0x282 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_abbrev  0x0000000000000813       0xc5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_abbrev  0x00000000000008d8       0xb8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_abbrev  0x0000000000000990      0x2db /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_abbrev  0x0000000000000c6b       0xb2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_abbrev  0x0000000000000d1d       0x87 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_abbrev  0x0000000000000da4      0x1b5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_abbrev  0x0000000000000f59      0x51d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_abbrev  0x0000000000001476      0x1c4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_abbrev  0x000000000000163a       0x12 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_abbrev  0x000000000000164c       0xdd /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_abbrev  0x0000000000001729      0x4e6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_abbrev  0x0000000000001c0f      0x4f2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_abbrev  0x0000000000002101      0x1f9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_abbrev  0x00000000000022fa      0x328 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_abbrev  0x0000000000002622      0x284 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_abbrev  0x00000000000028a6      0x2d5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_abbrev  0x0000000000002b7b       0xef /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_abbrev  0x0000000000002c6a      0x1a3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_abbrev  0x0000000000002e0d      0x5ab /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_abbrev  0x00000000000033b8      0x38f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_abbrev  0x0000000000003747       0xdf /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_abbrev  0x0000000000003826      0x4c1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_abbrev  0x0000000000003ce7      0x16c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_abbrev  0x0000000000003e53       0xa4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_abbrev  0x0000000000003ef7       0xa3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_abbrev  0x0000000000003f9a       0x6f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_abbrev  0x0000000000004009       0xa3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_abbrev  0x00000000000040ac      0x27b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_abbrev  0x0000000000004327       0xc0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
 
 .debug_loclists
-                0x0000000000000000      0x246
+                0x0000000000000000      0x2e2
  .debug_loclists
-                0x0000000000000000       0xd7 ./hello_world_ta.o
+                0x0000000000000000      0x140 ./hello_world_ta.o
  .debug_loclists
-                0x00000000000000d7       0x1e ./include/common/libmin_abs.o
+                0x0000000000000140       0x1e ./include/common/libmin_abs.o
  .debug_loclists
-                0x00000000000000f5      0x151 ./user_ta_header.o
+                0x000000000000015e       0x33 ./include/common/libmin_strlen.o
+ .debug_loclists
+                0x0000000000000191      0x151 ./user_ta_header.o
 
-.debug_aranges  0x0000000000000000      0x9b0
+.debug_aranges  0x0000000000000000      0x9e0
  .debug_aranges
                 0x0000000000000000       0x30 ./hello_world_ta.o
  .debug_aranges
                 0x0000000000000030       0x30 ./include/common/libmin_abs.o
  .debug_aranges
-                0x0000000000000060       0x30 ./user_ta_header.o
+                0x0000000000000060       0x30 ./include/common/libmin_strlen.o
  .debug_aranges
-                0x0000000000000090       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+                0x0000000000000090       0x30 ./user_ta_header.o
  .debug_aranges
-                0x00000000000000c0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+                0x00000000000000c0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
  .debug_aranges
-                0x00000000000000f0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+                0x00000000000000f0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
  .debug_aranges
-                0x0000000000000120       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+                0x0000000000000120       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
  .debug_aranges
-                0x0000000000000150       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+                0x0000000000000150       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .debug_aranges
-                0x0000000000000180       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+                0x0000000000000180       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
  .debug_aranges
-                0x00000000000001b0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                0x00000000000001b0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
  .debug_aranges
                 0x00000000000001e0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .debug_aranges
@@ -1873,286 +1892,303 @@ LOAD linker stubs
  .debug_aranges
                 0x0000000000000270      0x3b0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
  .debug_aranges
-                0x0000000000000620       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+                0x0000000000000620       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .debug_aranges
-                0x0000000000000650       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+                0x0000000000000650       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .debug_aranges
-                0x0000000000000680       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+                0x0000000000000680       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .debug_aranges
-                0x00000000000006b0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+                0x00000000000006b0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
  .debug_aranges
-                0x00000000000006e0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+                0x00000000000006e0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
  .debug_aranges
-                0x0000000000000710       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+                0x0000000000000710       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
  .debug_aranges
-                0x0000000000000740       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+                0x0000000000000740       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
  .debug_aranges
-                0x0000000000000770       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+                0x0000000000000770       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
  .debug_aranges
-                0x00000000000007a0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+                0x00000000000007a0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
  .debug_aranges
-                0x00000000000007d0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+                0x00000000000007d0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
  .debug_aranges
-                0x0000000000000800       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+                0x0000000000000800       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
  .debug_aranges
-                0x0000000000000830       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+                0x0000000000000830       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
  .debug_aranges
-                0x0000000000000860       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+                0x0000000000000860       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
  .debug_aranges
-                0x0000000000000890       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+                0x0000000000000890       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
  .debug_aranges
-                0x00000000000008c0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+                0x00000000000008c0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
  .debug_aranges
-                0x00000000000008f0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+                0x00000000000008f0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
  .debug_aranges
-                0x0000000000000920       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+                0x0000000000000920       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
  .debug_aranges
-                0x0000000000000950       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+                0x0000000000000950       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
  .debug_aranges
-                0x0000000000000980       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+                0x0000000000000980       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_aranges
+                0x00000000000009b0       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
 
-.debug_macro    0x0000000000000000    0x19e21
- .debug_macro   0x0000000000000000      0x142 ./hello_world_ta.o
- .debug_macro   0x0000000000000142      0xa0c ./hello_world_ta.o
- .debug_macro   0x0000000000000b4e      0x10b ./hello_world_ta.o
- .debug_macro   0x0000000000000c59      0x189 ./hello_world_ta.o
- .debug_macro   0x0000000000000de2      0xceb ./hello_world_ta.o
- .debug_macro   0x0000000000001acd       0x7c ./hello_world_ta.o
- .debug_macro   0x0000000000001b49      0x1a0 ./hello_world_ta.o
- .debug_macro   0x0000000000001ce9       0xc4 ./hello_world_ta.o
- .debug_macro   0x0000000000001dad       0x22 ./hello_world_ta.o
- .debug_macro   0x0000000000001dcf       0x35 ./hello_world_ta.o
- .debug_macro   0x0000000000001e04       0x58 ./hello_world_ta.o
- .debug_macro   0x0000000000001e5c       0x34 ./hello_world_ta.o
- .debug_macro   0x0000000000001e90       0x79 ./hello_world_ta.o
- .debug_macro   0x0000000000001f09      0x184 ./hello_world_ta.o
- .debug_macro   0x000000000000208d       0xfd ./hello_world_ta.o
- .debug_macro   0x000000000000218a       0x2e ./hello_world_ta.o
- .debug_macro   0x00000000000021b8       0x33 ./hello_world_ta.o
- .debug_macro   0x00000000000021eb       0x10 ./hello_world_ta.o
- .debug_macro   0x00000000000021fb       0x1c ./hello_world_ta.o
- .debug_macro   0x0000000000002217       0x4d ./include/common/libmin_abs.o
- .debug_macro   0x0000000000002264      0xa0c ./include/common/libmin_abs.o
- .debug_macro   0x0000000000002c70       0x10 ./include/common/libmin_abs.o
- .debug_macro   0x0000000000002c80       0x88 ./include/common/libmin_abs.o
- .debug_macro   0x0000000000002d08      0x194 ./user_ta_header.o
- .debug_macro   0x0000000000002e9c      0xa0c ./user_ta_header.o
- .debug_macro   0x00000000000038a8       0x2e ./user_ta_header.o
- .debug_macro   0x00000000000038d6       0xf0 ./user_ta_header.o
- .debug_macro   0x00000000000039c6       0x88 ./user_ta_header.o
- .debug_macro   0x0000000000003a4e       0x2e ./user_ta_header.o
- .debug_macro   0x0000000000003a7c       0xd6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000003b52      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x00000000000044b0      0x5c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004a70      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004be4       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004c06       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004c1c       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004c95       0xea /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_macro   0x0000000000004d7f       0xb5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_macro   0x0000000000004e34      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_macro   0x0000000000005792      0xcf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_macro   0x0000000000006483       0x57 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_macro   0x00000000000064da      0x958 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_macro   0x0000000000006e32       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_macro   0x0000000000006eae      0x13d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_macro   0x0000000000006feb      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_macro   0x0000000000007949       0x66 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
- .debug_macro   0x00000000000079af      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
- .debug_macro   0x000000000000830d       0x5a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .debug_macro   0x0000000000008367      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .debug_macro   0x0000000000008cc5      0x139 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x0000000000008dfe      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_macro   0x000000000000975c       0xf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
- .debug_macro   0x000000000000984d      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
- .debug_macro   0x000000000000a1ab      0x20b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000a3b6      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000ad14     0x1609 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c31d       0x5f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c37c       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c392       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c3ae      0x2e9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c697       0x34 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c6cb       0x8e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_macro   0x000000000000c759       0xb3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
- .debug_macro   0x000000000000c80c      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
- .debug_macro   0x000000000000d16a      0x1a5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
- .debug_macro   0x000000000000d30f      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
- .debug_macro   0x000000000000dc6d      0x1cb /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000de38      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000e796      0x13c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000e8d2       0x12 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000e8e4       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000e95d      0x21c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_macro   0x000000000000eb79      0x124 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
- .debug_macro   0x000000000000ec9d      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
- .debug_macro   0x000000000000f5fb      0x1f3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_macro   0x000000000000f7ee      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_macro   0x000000000001014c       0x3a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_macro   0x0000000000010186      0x13a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_macro   0x00000000000102c0      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_macro   0x0000000000010c1e       0x89 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_macro   0x0000000000010ca7      0x189 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_macro   0x0000000000010e30      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_macro   0x000000000001178e       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_macro   0x000000000001179e      0x105 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
- .debug_macro   0x00000000000118a3      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
- .debug_macro   0x0000000000012201       0x48 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- .debug_macro   0x0000000000012249      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- .debug_macro   0x0000000000012ba7      0x1d4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x0000000000012d7b      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x00000000000136d9       0x8b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x0000000000013764       0x2b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x000000000001378f       0x41 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x00000000000137d0       0x17 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x00000000000137e7       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_macro   0x00000000000137f7      0x113 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_macro   0x000000000001390a      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_macro   0x0000000000014268       0x3c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_macro   0x00000000000142a4       0x70 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_macro   0x0000000000014314      0x14d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_macro   0x0000000000014461      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_macro   0x0000000000014dbf       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_macro   0x0000000000014dcf       0x7f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_macro   0x0000000000014e4e       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_macro   0x0000000000014e64      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_macro   0x0000000000014fd8      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_macro   0x0000000000015936       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_macro   0x0000000000015946       0x3c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_macro   0x0000000000015982       0x4d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
- .debug_macro   0x00000000000159cf      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
- .debug_macro   0x000000000001632d       0x64 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
- .debug_macro   0x0000000000016391      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
- .debug_macro   0x0000000000016cef       0x51 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
- .debug_macro   0x0000000000016d40      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
- .debug_macro   0x000000000001769e       0x54 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
- .debug_macro   0x00000000000176f2      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
- .debug_macro   0x0000000000018050       0x8b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
- .debug_macro   0x00000000000180db      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
- .debug_macro   0x0000000000018a39       0xed /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
- .debug_macro   0x0000000000018b26      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
- .debug_macro   0x0000000000019484       0x3f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
- .debug_macro   0x00000000000194c3      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+.debug_rnglists
+                0x0000000000000000       0x2e
+ .debug_rnglists
+                0x0000000000000000       0x17 ./hello_world_ta.o
+ .debug_rnglists
+                0x0000000000000017       0x17 ./user_ta_header.o
 
-.debug_line     0x0000000000000000     0xf6c2
- .debug_line    0x0000000000000000      0x159 ./hello_world_ta.o
- .debug_line    0x0000000000000159       0x7e ./include/common/libmin_abs.o
- .debug_line    0x00000000000001d7      0x13c ./user_ta_header.o
- .debug_line    0x0000000000000313      0x44b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
- .debug_line    0x000000000000075e      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
- .debug_line    0x00000000000009ec      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
- .debug_line    0x0000000000000c7a      0x9b3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_line    0x000000000000162d      0x1fd /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
- .debug_line    0x000000000000182a      0x1ee /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .debug_line    0x0000000000001a18      0x300 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_line    0x0000000000001d18      0x389 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
- .debug_line    0x00000000000020a1      0xac1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_line    0x0000000000002b62      0x3b8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
- .debug_line    0x0000000000002f1a      0x53c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
- .debug_line    0x0000000000003456     0x1025 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
- .debug_line    0x000000000000447b     0x1c61 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
- .debug_line    0x00000000000060dc      0x4f4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
- .debug_line    0x00000000000065d0      0xc62 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
- .debug_line    0x0000000000007232      0x4f2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
- .debug_line    0x0000000000007724      0x5f9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
- .debug_line    0x0000000000007d1d      0x31c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
- .debug_line    0x0000000000008039      0x485 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
- .debug_line    0x00000000000084be     0x4267 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
- .debug_line    0x000000000000c725      0xca3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
- .debug_line    0x000000000000d3c8      0x331 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
- .debug_line    0x000000000000d6f9      0xee0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
- .debug_line    0x000000000000e5d9      0x222 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
- .debug_line    0x000000000000e7fb      0x223 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
- .debug_line    0x000000000000ea1e      0x1df /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
- .debug_line    0x000000000000ebfd      0x1f3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
- .debug_line    0x000000000000edf0      0x28b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
- .debug_line    0x000000000000f07b      0x3af /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
- .debug_line    0x000000000000f42a      0x298 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+.debug_macro    0x0000000000000000    0x1a83a
+ .debug_macro   0x0000000000000000       0xfc ./hello_world_ta.o
+ .debug_macro   0x00000000000000fc      0xa0c ./hello_world_ta.o
+ .debug_macro   0x0000000000000b08      0x10b ./hello_world_ta.o
+ .debug_macro   0x0000000000000c13      0x189 ./hello_world_ta.o
+ .debug_macro   0x0000000000000d9c      0xceb ./hello_world_ta.o
+ .debug_macro   0x0000000000001a87       0x7c ./hello_world_ta.o
+ .debug_macro   0x0000000000001b03      0x1a0 ./hello_world_ta.o
+ .debug_macro   0x0000000000001ca3       0xc4 ./hello_world_ta.o
+ .debug_macro   0x0000000000001d67       0x22 ./hello_world_ta.o
+ .debug_macro   0x0000000000001d89       0x35 ./hello_world_ta.o
+ .debug_macro   0x0000000000001dbe       0x58 ./hello_world_ta.o
+ .debug_macro   0x0000000000001e16       0x34 ./hello_world_ta.o
+ .debug_macro   0x0000000000001e4a       0x79 ./hello_world_ta.o
+ .debug_macro   0x0000000000001ec3      0x184 ./hello_world_ta.o
+ .debug_macro   0x0000000000002047       0xfd ./hello_world_ta.o
+ .debug_macro   0x0000000000002144       0x1c ./hello_world_ta.o
+ .debug_macro   0x0000000000002160       0x58 ./include/common/libmin_abs.o
+ .debug_macro   0x00000000000021b8      0xa0c ./include/common/libmin_abs.o
+ .debug_macro   0x0000000000002bc4       0x10 ./include/common/libmin_abs.o
+ .debug_macro   0x0000000000002bd4       0x88 ./include/common/libmin_abs.o
+ .debug_macro   0x0000000000002c5c       0x58 ./include/common/libmin_strlen.o
+ .debug_macro   0x0000000000002cb4      0xa0c ./include/common/libmin_strlen.o
+ .debug_macro   0x00000000000036c0      0x194 ./user_ta_header.o
+ .debug_macro   0x0000000000003854      0xa0c ./user_ta_header.o
+ .debug_macro   0x0000000000004260       0x2e ./user_ta_header.o
+ .debug_macro   0x000000000000428e       0x2e ./user_ta_header.o
+ .debug_macro   0x00000000000042bc       0x33 ./user_ta_header.o
+ .debug_macro   0x00000000000042ef       0xf0 ./user_ta_header.o
+ .debug_macro   0x00000000000043df       0x88 ./user_ta_header.o
+ .debug_macro   0x0000000000004467       0x2e ./user_ta_header.o
+ .debug_macro   0x0000000000004495       0xd6 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x000000000000456b      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x0000000000004ec9      0x5c0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x0000000000005489      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x00000000000055fd       0x22 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x000000000000561f       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x0000000000005635       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x00000000000056ae       0xea /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_macro   0x0000000000005798       0xb5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_macro   0x000000000000584d      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_macro   0x00000000000061ab      0xcf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_macro   0x0000000000006e9c       0x57 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_macro   0x0000000000006ef3      0x958 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_macro   0x000000000000784b       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_macro   0x00000000000078c7      0x13d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_macro   0x0000000000007a04      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_macro   0x0000000000008362       0x66 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_macro   0x00000000000083c8      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_macro   0x0000000000008d26       0x5a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_macro   0x0000000000008d80      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_macro   0x00000000000096de       0xf1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_macro   0x00000000000097cf      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_macro   0x000000000000a12d      0x20b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000a338      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000ac96     0x1609 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c29f       0x5f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c2fe       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c314       0x1c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c330      0x2e9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c619       0x34 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c64d       0x8e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_macro   0x000000000000c6db       0xb3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_macro   0x000000000000c78e      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_macro   0x000000000000d0ec      0x139 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x000000000000d225      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_macro   0x000000000000db83      0x1a5 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_macro   0x000000000000dd28      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_macro   0x000000000000e686      0x1cb /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000e851      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000f1af      0x13c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000f2eb       0x12 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000f2fd       0x79 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000f376      0x21c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_macro   0x000000000000f592      0x124 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_macro   0x000000000000f6b6      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_macro   0x0000000000010014      0x1f3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_macro   0x0000000000010207      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_macro   0x0000000000010b65       0x3a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_macro   0x0000000000010b9f      0x13a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_macro   0x0000000000010cd9      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_macro   0x0000000000011637       0x89 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_macro   0x00000000000116c0      0x189 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_macro   0x0000000000011849      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_macro   0x00000000000121a7       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_macro   0x00000000000121b7      0x105 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_macro   0x00000000000122bc      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_macro   0x0000000000012c1a       0x48 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_macro   0x0000000000012c62      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_macro   0x00000000000135c0      0x1d4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x0000000000013794      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x00000000000140f2       0x8b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x000000000001417d       0x2b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x00000000000141a8       0x41 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x00000000000141e9       0x17 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x0000000000014200       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_macro   0x0000000000014210      0x113 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_macro   0x0000000000014323      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_macro   0x0000000000014c81       0x3c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_macro   0x0000000000014cbd       0x70 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_macro   0x0000000000014d2d      0x14d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_macro   0x0000000000014e7a      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_macro   0x00000000000157d8       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_macro   0x00000000000157e8       0x7f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_macro   0x0000000000015867       0x16 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_macro   0x000000000001587d      0x174 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_macro   0x00000000000159f1      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_macro   0x000000000001634f       0x10 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_macro   0x000000000001635f       0x3c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_macro   0x000000000001639b       0x4d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_macro   0x00000000000163e8      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_macro   0x0000000000016d46       0x64 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_macro   0x0000000000016daa      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_macro   0x0000000000017708       0x51 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_macro   0x0000000000017759      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_macro   0x00000000000180b7       0x54 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_macro   0x000000000001810b      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_macro   0x0000000000018a69       0x8b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_macro   0x0000000000018af4      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_macro   0x0000000000019452       0xed /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_macro   0x000000000001953f      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_macro   0x0000000000019e9d       0x3f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+ .debug_macro   0x0000000000019edc      0x95e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
 
-.debug_str      0x0000000000000000    0x1bc7c
- .debug_str     0x0000000000000000     0xa6df ./hello_world_ta.o
-                                       0xa89f (size before relaxing)
- .debug_str     0x000000000000a6df      0x1eb ./include/common/libmin_abs.o
-                                       0x3dcc (size before relaxing)
- .debug_str     0x000000000000a8ca     0x126e ./user_ta_header.o
+.debug_line     0x0000000000000000     0xf7ae
+ .debug_line    0x0000000000000000      0x1b3 ./hello_world_ta.o
+ .debug_line    0x00000000000001b3       0x7e ./include/common/libmin_abs.o
+ .debug_line    0x0000000000000231       0x92 ./include/common/libmin_strlen.o
+ .debug_line    0x00000000000002c3      0x13c ./user_ta_header.o
+ .debug_line    0x00000000000003ff      0x44b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_line    0x000000000000084a      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_line    0x0000000000000ad8      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_line    0x0000000000000d66      0x9b3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_line    0x0000000000001719      0x1fd /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_line    0x0000000000001916      0x1ee /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_line    0x0000000000001b04      0x389 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_line    0x0000000000001e8d      0xac1 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_line    0x000000000000294e      0x3b8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_line    0x0000000000002d06      0x53c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_line    0x0000000000003242      0x300 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+ .debug_line    0x0000000000003542     0x1025 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_line    0x0000000000004567     0x1c61 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_line    0x00000000000061c8      0x4f4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_line    0x00000000000066bc      0xc62 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_line    0x000000000000731e      0x4f2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_line    0x0000000000007810      0x5f9 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_line    0x0000000000007e09      0x31c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_line    0x0000000000008125      0x485 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_line    0x00000000000085aa     0x4267 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_line    0x000000000000c811      0xca3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_line    0x000000000000d4b4      0x331 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_line    0x000000000000d7e5      0xee0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_line    0x000000000000e6c5      0x222 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_line    0x000000000000e8e7      0x223 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_line    0x000000000000eb0a      0x1df /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_line    0x000000000000ece9      0x1f3 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_line    0x000000000000eedc      0x28b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_line    0x000000000000f167      0x3af /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_line    0x000000000000f516      0x298 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+
+.debug_str      0x0000000000000000    0x1bcd0
+ .debug_str     0x0000000000000000     0xa4e8 ./hello_world_ta.o
+                                       0xa6b2 (size before relaxing)
+ .debug_str     0x000000000000a4e8      0x1eb ./include/common/libmin_abs.o
+                                       0x3df4 (size before relaxing)
+ .debug_str     0x000000000000a6d3       0x39 ./include/common/libmin_strlen.o
+                                       0x3e06 (size before relaxing)
+ .debug_str     0x000000000000a70c     0x1460 ./user_ta_header.o
                                        0xba9f (size before relaxing)
- .debug_str     0x000000000000bb38     0x1ba2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
+ .debug_str     0x000000000000bb6c     0x1ba2 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
                                        0x6847 (size before relaxing)
- .debug_str     0x000000000000d6da       0xb0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
+ .debug_str     0x000000000000d70e       0xb0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(stack_check.o)
                                        0xa3be (size before relaxing)
- .debug_str     0x000000000000d78a      0x375 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
+ .debug_str     0x000000000000d7be      0x375 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
                                        0x488e (size before relaxing)
- .debug_str     0x000000000000daff      0x5bf /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
+ .debug_str     0x000000000000db33      0x5b8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
                                        0x5cee (size before relaxing)
- .debug_str     0x000000000000e0be      0x13e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
+ .debug_str     0x000000000000e0eb      0x13e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
                                        0x4a75 (size before relaxing)
- .debug_str     0x000000000000e1fc       0x7a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
+ .debug_str     0x000000000000e229       0x7a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
                                        0x4a12 (size before relaxing)
- .debug_str     0x000000000000e276       0x62 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
-                                       0xa5dd (size before relaxing)
- .debug_str     0x000000000000e2d8       0x60 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
+ .debug_str     0x000000000000e2a3       0x74 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
                                        0xae11 (size before relaxing)
- .debug_str     0x000000000000e338     0x7a11 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_str     0x000000000000e317     0x7a43 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
                                       0x1374d (size before relaxing)
- .debug_str     0x0000000000015d49       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .debug_str     0x0000000000015d5a       0x7c /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
                                        0xa44c (size before relaxing)
- .debug_str     0x0000000000015dc5       0x37 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_str     0x0000000000015dd6       0x37 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
                                          0xb3 (size before relaxing)
- .debug_str     0x0000000000015dfc      0x5a8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
+ .debug_str     0x0000000000015e0d       0x43 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
+                                       0xa5dd (size before relaxing)
+ .debug_str     0x0000000000015e50      0x5a8 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
                                        0xc36e (size before relaxing)
- .debug_str     0x00000000000163a4     0x1d57 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
+ .debug_str     0x00000000000163f8     0x1d57 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
                                        0xd5a3 (size before relaxing)
- .debug_str     0x00000000000180fb      0x233 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
+ .debug_str     0x000000000001814f      0x233 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
                                        0xb140 (size before relaxing)
- .debug_str     0x000000000001832e      0x499 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
+ .debug_str     0x0000000000018382      0x499 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_property.o)
                                        0xc2e6 (size before relaxing)
- .debug_str     0x00000000000187c7      0x359 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
+ .debug_str     0x000000000001881b      0x359 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_system_pta.o)
                                        0xb918 (size before relaxing)
- .debug_str     0x0000000000018b20      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
+ .debug_str     0x0000000000018b74      0x28e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tcb.o)
                                       0x12bb4 (size before relaxing)
- .debug_str     0x0000000000018dae       0x3b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
+ .debug_str     0x0000000000018e02       0x3b /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(assert.o)
                                        0xab3a (size before relaxing)
- .debug_str     0x0000000000018de9       0x5a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
+ .debug_str     0x0000000000018e3d       0x5a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(base64.o)
                                        0x4da0 (size before relaxing)
- .debug_str     0x0000000000018e43     0x1ac4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
+ .debug_str     0x0000000000018e97     0x1ac4 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(bignum.o)
                                        0x8a45 (size before relaxing)
- .debug_str     0x000000000001a907      0x63d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
+ .debug_str     0x000000000001a95b      0x63d /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(constant_time.o)
                                        0x6d87 (size before relaxing)
- .debug_str     0x000000000001af44      0x3f7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
+ .debug_str     0x000000000001af98      0x3f7 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libmbedtls.a(platform_util.o)
                                        0x7395 (size before relaxing)
- .debug_str     0x000000000001b33b      0x624 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
+ .debug_str     0x000000000001b38f      0x624 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(bget_malloc.o)
                                        0x72b5 (size before relaxing)
- .debug_str     0x000000000001b95f       0x46 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
+ .debug_str     0x000000000001b9b3       0x46 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintf.o)
                                        0x47df (size before relaxing)
- .debug_str     0x000000000001b9a5      0x10e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
+ .debug_str     0x000000000001b9f9      0x10e /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memmove.o)
                                        0x4a74 (size before relaxing)
- .debug_str     0x000000000001bab3       0x50 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
+ .debug_str     0x000000000001bb07       0x50 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memset.o)
                                        0x4828 (size before relaxing)
- .debug_str     0x000000000001bb03       0x50 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
+ .debug_str     0x000000000001bb57       0x50 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strcmp.o)
                                        0x4a12 (size before relaxing)
- .debug_str     0x000000000001bb53       0x42 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
+ .debug_str     0x000000000001bba7       0x42 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlcpy.o)
                                        0x50b6 (size before relaxing)
- .debug_str     0x000000000001bb95       0x7f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
+ .debug_str     0x000000000001bbe9       0x7f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(mempool.o)
                                        0x6a50 (size before relaxing)
- .debug_str     0x000000000001bc14       0x68 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
+ .debug_str     0x000000000001bc68       0x68 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
                                        0x4822 (size before relaxing)
 
 .debug_line_str
-                0x0000000000000000      0x36e
+                0x0000000000000000      0x384
  .debug_line_str
-                0x0000000000000000      0x251 ./hello_world_ta.o
-                                        0x2c0 (size before relaxing)
+                0x0000000000000000      0x22a ./hello_world_ta.o
+                                        0x299 (size before relaxing)
  .debug_line_str
-                0x0000000000000251       0x26 ./include/common/libmin_abs.o
+                0x000000000000022a       0x26 ./include/common/libmin_abs.o
                                         0x1c2 (size before relaxing)
  .debug_line_str
-                0x0000000000000277       0xf7 ./user_ta_header.o
+                0x0000000000000250       0x1f ./include/common/libmin_strlen.o
+                                        0x1cb (size before relaxing)
+ .debug_line_str
+                0x000000000000026f      0x115 ./user_ta_header.o
                                         0x37c (size before relaxing)
 
 .comment        0x0000000000000000       0x4e
  .comment       0x0000000000000000       0x2f ./hello_world_ta.o
                                          0x30 (size before relaxing)
  .comment       0x000000000000002f       0x30 ./include/common/libmin_abs.o
+ .comment       0x000000000000002f       0x30 ./include/common/libmin_strlen.o
  .comment       0x000000000000002f       0x30 ./user_ta_header.o
  .comment       0x000000000000002f       0x1f /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
                                          0x20 (size before relaxing)
@@ -2161,10 +2197,10 @@ LOAD linker stubs
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memchr.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
- .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .comment       0x000000000000004e       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)
@@ -2192,6 +2228,8 @@ LOAD linker stubs
  .note.GNU-stack
                 0x0000000000000000        0x0 ./include/common/libmin_abs.o
  .note.GNU-stack
+                0x0000000000000000        0x0 ./include/common/libmin_strlen.o
+ .note.GNU-stack
                 0x0000000000000000        0x0 ./user_ta_header.o
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
@@ -2206,13 +2244,13 @@ LOAD linker stubs
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(strlen.o)
  .note.GNU-stack
-                0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(trace_ext.o)
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry_compat.o)
+ .note.GNU-stack
+                0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .note.GNU-stack
@@ -2252,11 +2290,6 @@ LOAD linker stubs
  .note.GNU-stack
                 0x0000000000000000        0x0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(consttime_memcmp.o)
 
-.debug_rnglists
-                0x0000000000000000       0x17
- .debug_rnglists
-                0x0000000000000000       0x17 ./user_ta_header.o
-
 .debug_loc      0x0000000000000000    0x24053
  .debug_loc     0x0000000000000000      0x71a /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
  .debug_loc     0x000000000000071a      0x679 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(memcpy.o)
@@ -2289,9 +2322,9 @@ LOAD linker stubs
 .debug_ranges   0x0000000000000000     0x1d10
  .debug_ranges  0x0000000000000000       0x70 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(trace.o)
  .debug_ranges  0x0000000000000070       0x30 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutils.a(snprintk.o)
- .debug_ranges  0x00000000000000a0       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
- .debug_ranges  0x00000000000000c0      0x1b0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
- .debug_ranges  0x0000000000000270      0x3b0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_ranges  0x00000000000000a0      0x1b0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(user_ta_entry.o)
+ .debug_ranges  0x0000000000000250      0x3b0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(utee_syscalls_a64.o)
+ .debug_ranges  0x0000000000000600       0x20 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(abort.o)
  .debug_ranges  0x0000000000000620      0x200 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api.o)
  .debug_ranges  0x0000000000000820      0x5d0 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_arith_mpi.o)
  .debug_ranges  0x0000000000000df0      0x130 /home/nick2/michael/repos/bringupbench-optee-wasm/ta_devkit/lib/libutee.a(tee_api_panic.o)

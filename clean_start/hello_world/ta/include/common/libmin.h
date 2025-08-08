@@ -1,10 +1,8 @@
+
 #ifndef LIBMIN_H
 #define LIBMIN_H
 
-int libmin_abs(int i);
-// int libmin_printf(int *fmt, ...);
-
-// int libmin_printf(char *fmt, ...);
+#include <stddef.h>
 
 // #include "libtarg.h"
 
@@ -41,7 +39,7 @@ int libmin_abs(int i);
 // char *libmin_strncat(char *d, const char *s, size_t n);
 
 // /* return string length */
-// size_t libmin_strlen(const char *str);
+size_t libmin_strlen(const char *str);
 
 // /* return order of strings */
 // int libmin_strcmp(const char *l, const char *r);
@@ -182,7 +180,7 @@ int libmin_abs(int i);
 // #define isalpha(c)     (_pctype[(int)(c)] & (_UPPER | _LOWER))
 // #define isupper(c)     (_pctype[(int)(c)] & _UPPER)
 // #define islower(c)     (_pctype[(int)(c)] & _LOWER)
-// #define isdigit(c)     (_pctype[(int)(c)] & _DIGIT)
+#define isdigit(c)     (_pctype[(int)(c)] & _DIGIT)
 // #define isxdigit(c)    (_pctype[(int)(c)] & _HEX)
 // #define isspace(c)     (_pctype[(int)(c)] & _SPACE)
 // #define ispunct(c)     (_pctype[(int)(c)] & _PUNCT)
@@ -350,7 +348,7 @@ int libmin_abs(int i);
 // double libmin_pow(double x, double y);
 // double libmin_sqrt(double x);
 // double libmin_exp(double x);
-// int libmin_abs(int i);
+int libmin_abs(int i);
 // double libmin_acos(double x);
 // double libmin_asin(double x);
 // double libmin_atan2(double y, double x);
