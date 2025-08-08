@@ -68,7 +68,7 @@ size_t libmin_strlen(const char *str);
 // int libmin_snprintf(char *s, size_t size, char *fmt, ...);
 // #else /* TARGET_SILENT */
 // /* run silent */
-// #define libmin_printf(FMT, ARGS...)	do { ; } while (0)
+#define libmin_printf(FMT, ARGS...)	do { ; } while (0)
 // #endif /* TARGET_SILENT */
 
 // /* print one character */
