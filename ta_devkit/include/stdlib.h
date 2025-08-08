@@ -20,6 +20,10 @@ qsort(void *aa, size_t n, size_t es, int (*cmp)(const void *, const void *));
 
 void abort(void) __noreturn;
 
+// This is because many of the BringupBench rely on exit(0)
+// There's probably a better way to do this
+#define exit(x) abort()
+
 int abs(int i);
 
 /* The largest number returned by rand() */
