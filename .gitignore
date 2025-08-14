@@ -12,5 +12,13 @@ FOO
 *.enc
 *.na
 *.log
+
 ibex_simple_system_pcount.csv
 target/simple_mmio_plugin.so
+
+*.cmd
+*.lds
+*.dmp
+*.map
+*.ta
+*/dyn_list
