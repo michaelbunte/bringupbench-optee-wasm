@@ -1,8 +1,77 @@
 
+
 #ifndef LIBMIN_H
 #define LIBMIN_H
 
+/*
+ * Called when the instance of the TA is created. This is the first call in
+ * the TA.
+ */
+#define TA_CREATE_ENTRY_POINT TEE_Result TA_CreateEntryPoint(void)  \
+{                                                                   \
+	DMSG("has been called");                                        \
+	return TEE_SUCCESS;                                             \
+} 
+
+
+/*
+ * Called when the instance of the TA is destroyed if the TA has not
+ * crashed or panicked. This is the last call in the TA.
+ */
+#define TA_DESTROY_ENTRY_POINT void TA_DestroyEntryPoint(void)  \
+{                                                               \
+	DMSG("has been called");                                    \
+}
+
+
+/*
+ * Called when a new session is opened to the TA. *sess_ctx can be updated
+ * with a value to be able to identify this session in subsequent calls to the
+ * TA. In this function you will normally do the global initialization for the
+ * TA.
+ */
+#define TA_OPEN_SESSION_ENTRY_POINT TEE_Result TA_OpenSessionEntryPoint(    \
+        uint32_t param_types,                                               \
+		TEE_Param __maybe_unused params[4],                                 \
+		void __maybe_unused **sess_ctx)                                     \
+{                                                                           \
+	uint32_t exp_param_types = TEE_PARAM_TYPES(TEE_PARAM_TYPE_NONE,         \
+						   TEE_PARAM_TYPE_NONE,                             \
+						   TEE_PARAM_TYPE_NONE,                             \
+						   TEE_PARAM_TYPE_NONE);                            \
+	if (param_types != exp_param_types)                                     \
+		return TEE_ERROR_BAD_PARAMETERS;                                    \
+	(void)&params;                                                          \
+	(void)&sess_ctx;                                                        \
+	IMSG("Hello World!\n");                                                 \
+	return TEE_SUCCESS;                                                     \
+}
+
+/*
+ * Called when a session is closed, sess_ctx hold the value that was
+ * assigned by TA_OpenSessionEntryPoint().
+ */
+#define TA_CLOSE_SESSION_ENTRY_POINT void TA_CloseSessionEntryPoint(    \
+    void __maybe_unused *sess_ctx)                                      \
+{                                                                       \
+	(void)&sess_ctx;                                                    \
+	IMSG("Goodbye!\n");                                                 \
+}
+
+// #define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER TA_InvokeCommandEntryPoint(    \
+//             void __maybe_unused *sess_ctx,                                  \
+// 			uint32_t cmd_id,                                                \
+// 			uint32_t param_types,                                           \
+//             TEE_Param params[4])
+
+// #define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
+
+// #define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
+
+// =================== END CUSTOM SSYSARCH ================
+
 #include <stddef.h>
+#include <tee_internal_api.h>
 
 #include "libtarg.h"
 
@@ -68,7 +137,10 @@ size_t libmin_strlen(const char *str);
 // int libmin_snprintf(char *s, size_t size, char *fmt, ...);
 // #else /* TARGET_SILENT */
 // /* run silent */
-#define libmin_printf(FMT, ARGS...)	do { ; } while (0)
+
+#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
+// #define libmin_printf(FMT, ...) while(false){}
+
 // #endif /* TARGET_SILENT */
 
 // /* print one character */
