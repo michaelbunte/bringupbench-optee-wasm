@@ -8,7 +8,6 @@ TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
 TA_CLOSE_SESSION_ENTRY_POINT
 
-
 #define DATASET_SIZE 256
 int data[DATASET_SIZE];
 
@@ -45,7 +44,7 @@ void bubblesort(int *data, unsigned size)
   }
 }
 
-int bubs() {
+int mainf() {
   // initialize the pseudo-RNG
   libmin_srand(42);
   // mysrand(time(NULL));
@@ -76,11 +75,8 @@ int bubs() {
 }
 
 
-TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
-			uint32_t cmd_id,
-			uint32_t param_types, TEE_Param params[4])
-{
-	(void)&sess_ctx; /* Unused parameter */
-	bubs();
-	return TEE_SUCCESS;
+TA_INVOKE_COMMAND_ENTRY_POINT_HEADER {
+	TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE
+	mainf();
+	TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE
 }

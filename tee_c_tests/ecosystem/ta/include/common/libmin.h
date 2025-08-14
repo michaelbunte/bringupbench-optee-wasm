@@ -1,7 +1,7 @@
-
-
 #ifndef LIBMIN_H
 #define LIBMIN_H
+
+// =================== START CUSTOM SSYSARCH ================
 
 /*
  * Called when the instance of the TA is created. This is the first call in
@@ -58,21 +58,19 @@
 	IMSG("Goodbye!\n");                                                 \
 }
 
-// #define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER TA_InvokeCommandEntryPoint(    \
-//             void __maybe_unused *sess_ctx,                                  \
-// 			uint32_t cmd_id,                                                \
-// 			uint32_t param_types,                                           \
-//             TEE_Param params[4])
+#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER TEE_Result TA_InvokeCommandEntryPoint(    \
+            void __maybe_unused *sess_ctx,                                  \
+			uint32_t cmd_id,                                                \
+			uint32_t param_types,                                           \
+            TEE_Param params[4])
 
-// #define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
-
-// #define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
+#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
+#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
 
 // =================== END CUSTOM SSYSARCH ================
 
 #include <stddef.h>
 #include <tee_internal_api.h>
-
 #include "libtarg.h"
 
 #define TRUE  1
