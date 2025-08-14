@@ -1,6 +1,5 @@
 global-incdirs-y += include
-# srcs-y += hello_world_ta.c $(wildcard include/common/*.c)
-srcs-y += hello_world_ta.c \
+srcs-y += tee_c_test.c \
 	include/common/libtarg.c \
 	include/common/libmin_abs.c \
 	include/common/libmin_strlen.c \

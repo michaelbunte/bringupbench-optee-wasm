@@ -28,7 +28,7 @@
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
 
-#include <hello_world_ta.h>
+#include <tee_c_test.h>
 #include "common/libmin.h"
 
 
@@ -110,7 +110,6 @@ static TEE_Result inc_value(uint32_t param_types,
 		return TEE_ERROR_BAD_PARAMETERS;
 
 	IMSG("Got value: %u from NW", params[0].value.a);
-	params[0].value.a += DUMMY_VALUE;
 	IMSG("Increase value to: %u", params[0].value.a);
 
 	return TEE_SUCCESS;
@@ -167,6 +166,7 @@ bubblesort(int *data, unsigned size)
       {
         int tmp = data[j];
         data[j] = data[j+1];
+		
         data[j+1] = tmp;
         swapped = TRUE;
         swaps++;
@@ -200,6 +200,8 @@ int bubs() {
       return -1;
     }
   }
+
+  IMSG("INFO: %lu swaps executed.", swaps);
   libmin_printf("INFO: %lu swaps executed.\n", swaps);
   libmin_printf("INFO: data is properly sorted.\n");
 
@@ -214,7 +216,6 @@ TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
 {
 	(void)&sess_ctx; /* Unused parameter */
 
-	int a = DUMMY_VALUE;
 	// int b = THIS_IS_TEST;
 
 	// libmin_printf("hello there");

@@ -11,7 +11,7 @@ patterns=(
     "*.cmd"
     "*.lds"
     "dyn_list"
-    "hello_world_ta.o"
+    "tee_c_test.o"
 )
 
 echo "Cleaning up..."

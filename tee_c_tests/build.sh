@@ -1,6 +1,6 @@
 #!/bin/bash
 
-./hello_world/clean.sh
+./ecosystem/clean.sh
 
 export NV_TARGET_BOARD=234
 export CROSS_COMPILE_AARCH64_PATH=~/michael/aarch64--glibc--stable-2023.11-1

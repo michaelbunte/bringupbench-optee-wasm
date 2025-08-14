@@ -33,7 +33,7 @@
 #include <tee_client_api.h>
 
 /* For the UUID (found in the TA's h-file(s)) */
-#include <hello_world_ta.h>
+#include <tee_c_test.h>
 
 int main(void)
 {
