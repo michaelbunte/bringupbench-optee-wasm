@@ -141,6 +141,74 @@ static TEE_Result dec_value(uint32_t param_types,
  * assigned by TA_OpenSessionEntryPoint(). The rest of the paramters
  * comes from normal world.
  */
+
+#define DATASET_SIZE 256
+int data[DATASET_SIZE];
+
+// total swaps executed so far
+unsigned long swaps = 0;
+
+void
+print_data(int *data, unsigned size)
+{
+  libmin_printf("DATA DUMP:\n");
+  for (unsigned i=0; i < size; i++)
+    libmin_printf("  data[%u] = %d\n", i, data[i]);
+}
+
+void
+bubblesort(int *data, unsigned size)
+{
+  for (unsigned i=0; i < size-1; i++)
+  {
+    int swapped = FALSE;
+    for (unsigned j=0; j < size-1; j++)
+    {
+      if (data[j] > data[j+1])
+      {
+        int tmp = data[j];
+        data[j] = data[j+1];
+        data[j+1] = tmp;
+        swapped = TRUE;
+        swaps++;
+      }
+    }
+    // done?
+    if (!swapped)
+      break;
+  }
+}
+
+int bubs() {
+  // initialize the pseudo-RNG
+  libmin_srand(42);
+  // mysrand(time(NULL));
+
+  // initialize the array to sort
+  for (unsigned i=0; i < DATASET_SIZE; i++)
+    data[i] = libmin_rand();
+  print_data(data, DATASET_SIZE);
+
+  bubblesort(data, DATASET_SIZE);
+  print_data(data, DATASET_SIZE);
+
+  // check the array
+  for (unsigned i=0; i < DATASET_SIZE-1; i++)
+  {
+    if (data[i] > data[i+1])
+    {
+      libmin_printf("ERROR: data is not properly sorted.\n");
+      return -1;
+    }
+  }
+  libmin_printf("INFO: %lu swaps executed.\n", swaps);
+  libmin_printf("INFO: data is properly sorted.\n");
+
+//   libmin_success();
+  return 0;
+}
+
+
 TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
 			uint32_t cmd_id,
 			uint32_t param_types, TEE_Param params[4])
@@ -153,17 +221,6 @@ TEE_Result TA_InvokeCommandEntryPoint(void __maybe_unused *sess_ctx,
 	// libmin_printf("hello there");
 
 	// test();
-	libmin_abs(10);
-	// abort();
-
-	// libmin_printf("hi there!");
-
-	switch (cmd_id) {
-	case TA_HELLO_WORLD_CMD_INC_VALUE:
-		return inc_value(param_types, params);
-	case TA_HELLO_WORLD_CMD_DEC_VALUE:
-		return dec_value(param_types, params);
-	default:
-		return TEE_ERROR_BAD_PARAMETERS;
-	}
+	bubs();
+	return TEE_SUCCESS;
 }

@@ -102,7 +102,7 @@ void libmin_fail(int code);
 void libmin_srand(unsigned int seed);
 
 // /* generate a random integer */
-// unsigned int libmin_rand(void);
+unsigned int libmin_rand(void);
 
 // /* allocate memory */
 // void *libmin_malloc(size_t size);
