@@ -58,10 +58,11 @@
 	IMSG("Goodbye!\n");                                                 \
 }
 
-#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER TEE_Result TA_InvokeCommandEntryPoint(    \
-            void __maybe_unused *sess_ctx,                                  \
-			uint32_t cmd_id,                                                \
-			uint32_t param_types,                                           \
+#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER    \
+        TEE_Result TA_InvokeCommandEntryPoint(  \
+            void __maybe_unused *sess_ctx,      \
+			uint32_t cmd_id,                    \
+			uint32_t param_types,               \
             TEE_Param params[4])
 
 #define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
