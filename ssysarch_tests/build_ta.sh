@@ -9,9 +9,6 @@ rm -rf ./tee_c_ecosystem/ta/include/common
 mkdir ./tee_c_ecosystem/ta/include/common
 cp -R ./libmin_common/* ./tee_c_ecosystem/ta/include/common
 
-rm ./tee_c_ecosystem/ta/user_ta_header_defines.h
-cp ./shared/user_ta_header_defines.h ./tee_c_ecosystem/ta
-
 export NV_TARGET_BOARD=234
 export CROSS_COMPILE_AARCH64_PATH=~/michael/aarch64--glibc--stable-2023.11-1
 export CROSS_COMPILE_AARCH64=~/michael/aarch64--glibc--stable-2023.11-1/bin/aarch64-buildroot-linux-gnu-
