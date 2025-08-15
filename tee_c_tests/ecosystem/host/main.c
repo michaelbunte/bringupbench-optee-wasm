@@ -72,7 +72,7 @@ int main(void)
 
 	/*
 	 * Prepare the argument. Pass a value in the first parameter,
-	 * the remaining three parameters are unused.
+	 * the remaining three parameters are unused. 
 	 */
 	op.paramTypes = TEEC_PARAM_TYPES(TEEC_VALUE_INOUT, TEEC_NONE,
 					 TEEC_NONE, TEEC_NONE);
@@ -83,7 +83,7 @@ int main(void)
 	 * called.
 	 */
 	printf("Invoking TA to increment %d\n", op.params[0].value.a);
-	res = TEEC_InvokeCommand(&sess, TA_HELLO_WORLD_CMD_INC_VALUE, &op,
+	res = TEEC_InvokeCommand(&sess, 0, &op,
 				 &err_origin);
 	if (res != TEEC_SUCCESS)
 		errx(1, "TEEC_InvokeCommand failed with code 0x%x origin 0x%x",

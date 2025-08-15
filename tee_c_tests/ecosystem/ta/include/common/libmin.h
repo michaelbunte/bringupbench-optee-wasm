@@ -267,18 +267,18 @@ unsigned int libmin_rand(void);
 
 // /* math functions */
 
-// #define FORCE_EVAL(x) do {                        \
-// 	if (sizeof(x) == sizeof(float)) {         \
-// 		volatile float __x;               \
-// 		__x = (x); (void)__x;                        \
-// 	} else if (sizeof(x) == sizeof(double)) { \
-// 		volatile double __x;              \
-// 		__x = (x); (void)__x;                        \
-// 	} else {                                  \
-// 		volatile long double __x;         \
-// 		__x = (x); (void)__x;                        \
-// 	}                                         \
-// } while(0)
+#define FORCE_EVAL(x) do {                        \
+	if (sizeof(x) == sizeof(float)) {         \
+		volatile float __x;               \
+		__x = (x); (void)__x;                        \
+	} else if (sizeof(x) == sizeof(double)) { \
+		volatile double __x;              \
+		__x = (x); (void)__x;                        \
+	} else {                                  \
+		volatile long double __x;         \
+		__x = (x); (void)__x;                        \
+	}                                         \
+} while(0)
 
 // /* Get two 32 bit ints from a double.  */
 #define EXTRACT_WORDS(hi,lo,d)                    \
@@ -290,12 +290,12 @@ do {                                              \
 } while (0)
 
 // /* Get the more significant 32 bit int from a double.  */
-// #define GET_HIGH_WORD(hi,d)                       \
-// do {                                              \
-//   union {double f; uint64_t i;} __u;              \
-//   __u.f = (d);                                    \
-//   (hi) = __u.i >> 32;                             \
-// } while (0)
+#define GET_HIGH_WORD(hi,d)                       \
+do {                                              \
+  union {double f; uint64_t i;} __u;              \
+  __u.f = (d);                                    \
+  (hi) = __u.i >> 32;                             \
+} while (0)
 
 // /* Get the less significant 32 bit int from a double.  */
 // #define GET_LOW_WORD(lo,d)                        \
@@ -362,12 +362,12 @@ do {                                              \
 // #define CMPLXL(x, y) __CMPLX(x, y, long double)
 
 // #if FLT_EVAL_METHOD==0 || FLT_EVAL_METHOD==1
-// #define EPS DBL_EPSILON
+#define EPS DBL_EPSILON
 // #elif FLT_EVAL_METHOD==2
 // #define EPS LDBL_EPSILON
 // #endif
 
-// #define DBL_EPSILON 2.22044604925031308085e-16
+#define DBL_EPSILON 2.22044604925031308085e-16
 
 // #define FP_NAN       0
 // #define FP_INFINITE  1
@@ -411,9 +411,9 @@ do {                                              \
 // #define NAN     (__builtin_nanf(""))
 
 
-// double libmin_floor(double x);
-// double libmin_scalbn(double x, int n);
-// double libmin_cos(double x);
+double libmin_floor(double x);
+double libmin_scalbn(double x, int n);
+double libmin_cos(double x);
 // double libmin_sin(double x);
 // double libmin_fabs(double x);
 // float libmin_fabsf(float x);
@@ -430,7 +430,7 @@ int libmin_abs(int i);
 
 // /* internal mathlib interfaces */
 // int __rem_pio2_large(double *x, double *y, int e0, int nx, int prec);
-// int __rem_pio2(double x, double *y);
+int __rem_pio2(double x, double *y);
 
 // /* libmin assertions */
 // #define libmin_assert(P)    ((P) ? (void)0 : (void)libmin_fail(1))
