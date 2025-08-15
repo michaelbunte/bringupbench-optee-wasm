@@ -24,3 +24,7 @@ target/simple_mmio_plugin.so
 */dyn_list
 
 ssysarch_tests/tee_c_ecosystem/ta/include/common
+ssysarch_tests/tee_c_ecosystem/ta/include/tee_c_test.c
+
+ssysarch_tests/ree_c_ecosystem/common
+ssysarch_tests/ree_c_ecosystem/benchmark.c 

@@ -4,6 +4,7 @@
 // =================== START CUSTOM SSYSARCH MACROS ================
 
 #ifdef REE_C
+	#include <stdio.h>
 	#define TA_CREATE_ENTRY_POINT
 	#define TA_DESTROY_ENTRY_POINT
 	#define TA_OPEN_SESSION_ENTRY_POINT
@@ -12,6 +13,7 @@
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE
 #else
+	#include <tee_internal_api.h>
 	#define TA_CREATE_ENTRY_POINT TEE_Result TA_CreateEntryPoint(void)  \
 	{                                                                   \
 		DMSG("has been called");                                        \
@@ -67,7 +69,11 @@
 // #else /* TARGET_SILENT */
 // /* run silent */
 
-#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
+#ifdef REE_C
+	#define libmin_printf(FMT, ...) printf(FMT __VA_OPT__(,) __VA_ARGS__)
+#else 
+	#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
+#endif
 // #define libmin_printf(FMT, ...) while(false){}
 
 // #endif /* TARGET_SILENT */
@@ -80,7 +86,6 @@
 // =================== END REWRITTEN FUNCTIONS ================
 
 #include <stddef.h>
-#include <tee_internal_api.h>
 #include "libtarg.h"
 
 #define TRUE  1

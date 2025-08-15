@@ -1,6 +1,3 @@
-#include <tee_internal_api.h>
-#include <tee_internal_api_extensions.h>
-#include <tee_c_test.h>
 #include "common/libmin.h"
 
 TA_CREATE_ENTRY_POINT
