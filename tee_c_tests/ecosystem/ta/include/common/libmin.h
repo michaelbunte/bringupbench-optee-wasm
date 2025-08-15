@@ -3,70 +3,60 @@
 
 // =================== START CUSTOM SSYSARCH MACROS ================
 
-/*
- * Called when the instance of the TA is created. This is the first call in
- * the TA.
- */
-#define TA_CREATE_ENTRY_POINT TEE_Result TA_CreateEntryPoint(void)  \
-{                                                                   \
-	DMSG("has been called");                                        \
-	return TEE_SUCCESS;                                             \
-} 
+#ifdef REE_C
+	#define TA_CREATE_ENTRY_POINT
+	#define TA_DESTROY_ENTRY_POINT
+	#define TA_OPEN_SESSION_ENTRY_POINT
+	#define TA_CLOSE_SESSION_ENTRY_POINT
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER main(void)
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE
+#else
+	#define TA_CREATE_ENTRY_POINT TEE_Result TA_CreateEntryPoint(void)  \
+	{                                                                   \
+		DMSG("has been called");                                        \
+		return TEE_SUCCESS;                                             \
+	} 
 
+	#define TA_DESTROY_ENTRY_POINT void TA_DestroyEntryPoint(void)  \
+	{                                                               \
+		DMSG("has been called");                                    \
+	}
 
-/*
- * Called when the instance of the TA is destroyed if the TA has not
- * crashed or panicked. This is the last call in the TA.
- */
-#define TA_DESTROY_ENTRY_POINT void TA_DestroyEntryPoint(void)  \
-{                                                               \
-	DMSG("has been called");                                    \
-}
+	#define TA_OPEN_SESSION_ENTRY_POINT TEE_Result TA_OpenSessionEntryPoint(    \
+			uint32_t param_types,                                               \
+			TEE_Param __maybe_unused params[4],                                 \
+			void __maybe_unused **sess_ctx)                                     \
+	{                                                                           \
+		uint32_t exp_param_types = TEE_PARAM_TYPES(TEE_PARAM_TYPE_NONE,         \
+							TEE_PARAM_TYPE_NONE,                             \
+							TEE_PARAM_TYPE_NONE,                             \
+							TEE_PARAM_TYPE_NONE);                            \
+		if (param_types != exp_param_types)                                     \
+			return TEE_ERROR_BAD_PARAMETERS;                                    \
+		(void)&params;                                                          \
+		(void)&sess_ctx;                                                        \
+		IMSG("Hello World!\n");                                                 \
+		return TEE_SUCCESS;                                                     \
+	}
 
+	#define TA_CLOSE_SESSION_ENTRY_POINT void TA_CloseSessionEntryPoint(    \
+		void __maybe_unused *sess_ctx)                                      \
+	{                                                                       \
+		(void)&sess_ctx;                                                    \
+		IMSG("Goodbye!\n");                                                 \
+	}
 
-/*
- * Called when a new session is opened to the TA. *sess_ctx can be updated
- * with a value to be able to identify this session in subsequent calls to the
- * TA. In this function you will normally do the global initialization for the
- * TA.
- */
-#define TA_OPEN_SESSION_ENTRY_POINT TEE_Result TA_OpenSessionEntryPoint(    \
-        uint32_t param_types,                                               \
-		TEE_Param __maybe_unused params[4],                                 \
-		void __maybe_unused **sess_ctx)                                     \
-{                                                                           \
-	uint32_t exp_param_types = TEE_PARAM_TYPES(TEE_PARAM_TYPE_NONE,         \
-						   TEE_PARAM_TYPE_NONE,                             \
-						   TEE_PARAM_TYPE_NONE,                             \
-						   TEE_PARAM_TYPE_NONE);                            \
-	if (param_types != exp_param_types)                                     \
-		return TEE_ERROR_BAD_PARAMETERS;                                    \
-	(void)&params;                                                          \
-	(void)&sess_ctx;                                                        \
-	IMSG("Hello World!\n");                                                 \
-	return TEE_SUCCESS;                                                     \
-}
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER    \
+			TEE_Result TA_InvokeCommandEntryPoint(  \
+				void __maybe_unused *sess_ctx,      \
+				uint32_t cmd_id,                    \
+				uint32_t param_types,               \
+				TEE_Param params[4])
 
-/*
- * Called when a session is closed, sess_ctx hold the value that was
- * assigned by TA_OpenSessionEntryPoint().
- */
-#define TA_CLOSE_SESSION_ENTRY_POINT void TA_CloseSessionEntryPoint(    \
-    void __maybe_unused *sess_ctx)                                      \
-{                                                                       \
-	(void)&sess_ctx;                                                    \
-	IMSG("Goodbye!\n");                                                 \
-}
-
-#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER    \
-        TEE_Result TA_InvokeCommandEntryPoint(  \
-            void __maybe_unused *sess_ctx,      \
-			uint32_t cmd_id,                    \
-			uint32_t param_types,               \
-            TEE_Param params[4])
-
-#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
-#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
+	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
+#endif
 
 // =================== REWRITTEN FUNCTIONS ================
 
@@ -299,13 +289,13 @@ do {                                              \
   (hi) = __u.i >> 32;                             \
 } while (0)
 
-// /* Get the less significant 32 bit int from a double.  */
-// #define GET_LOW_WORD(lo,d)                        \
-// do {                                              \
-//   union {double f; uint64_t i;} __u;              \
-//   __u.f = (d);                                    \
-//   (lo) = (uint32_t)__u.i;                         \
-// } while (0)
+/* Get the less significant 32 bit int from a double.  */
+#define GET_LOW_WORD(lo,d)                        \
+do {                                              \
+  union {double f; uint64_t i;} __u;              \
+  __u.f = (d);                                    \
+  (lo) = (uint32_t)__u.i;                         \
+} while (0)
 
 /* Set a double from two 32 bit ints.  */
 #define INSERT_WORDS(d,hi,lo)                     \
