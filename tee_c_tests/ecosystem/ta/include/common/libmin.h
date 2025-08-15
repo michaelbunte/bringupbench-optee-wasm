@@ -82,6 +82,11 @@
 
 // #endif /* TARGET_SILENT */
 
+
+// /* successfully exit co-simulation */
+// void libmin_success(void);
+#define SUCCESS() IMSG("Success!")
+
 // =================== END REWRITTEN FUNCTIONS ================
 
 #include <stddef.h>
@@ -155,9 +160,6 @@ size_t libmin_strlen(const char *str);
 // /* failure/success codes */
 // #define EXIT_FAILURE  1 /* failing exit status */
 // #define EXIT_SUCCESS  0 /* successful exit status */
-
-// /* successfully exit co-simulation */
-// void libmin_success(void);
 
 // /* exit co-simulation with failure exit code CODE */
 void libmin_fail(int code);
@@ -233,37 +235,37 @@ unsigned int libmin_rand(void);
 // // Character types
 // //
 
-// #define _UPPER          0x1     // Upper case letter
-// #define _LOWER          0x2     // Lower case letter
-// #define _DIGIT          0x4     // Digit[0-9]
-// #define _SPACE          0x8     // Tab, carriage return, newline, vertical tab or form feed
-// #define _PUNCT          0x10    // Punctuation character
-// #define _CONTROL        0x20    // Control character
-// #define _BLANK          0x40    // Space char
-// #define _HEX            0x80    // Hexadecimal digit
+#define _UPPER          0x1     // Upper case letter
+#define _LOWER          0x2     // Lower case letter
+#define _DIGIT          0x4     // Digit[0-9]
+#define _SPACE          0x8     // Tab, carriage return, newline, vertical tab or form feed
+#define _PUNCT          0x10    // Punctuation character
+#define _CONTROL        0x20    // Control character
+#define _BLANK          0x40    // Space char
+#define _HEX            0x80    // Hexadecimal digit
 
 // #define _LEADBYTE       0x8000                      // Multibyte leadbyte
 // #define _ALPHA          (0x0100 | _UPPER| _LOWER)   // Alphabetic character
 
-// extern unsigned short *_pctype; // pointer to table for char's
+extern unsigned short *_pctype; // pointer to table for char's
 
-// int _isctype(int c, int mask);
+int _isctype(int c, int mask);
 
-// #define isalpha(c)     (_pctype[(int)(c)] & (_UPPER | _LOWER))
-// #define isupper(c)     (_pctype[(int)(c)] & _UPPER)
-// #define islower(c)     (_pctype[(int)(c)] & _LOWER)
+#define isalpha(c)     (_pctype[(int)(c)] & (_UPPER | _LOWER))
+#define isupper(c)     (_pctype[(int)(c)] & _UPPER)
+#define islower(c)     (_pctype[(int)(c)] & _LOWER)
 #define isdigit(c)     (_pctype[(int)(c)] & _DIGIT)
-// #define isxdigit(c)    (_pctype[(int)(c)] & _HEX)
-// #define isspace(c)     (_pctype[(int)(c)] & _SPACE)
-// #define ispunct(c)     (_pctype[(int)(c)] & _PUNCT)
-// #define isalnum(c)     (_pctype[(int)(c)] & (_UPPER | _LOWER | _DIGIT))
-// #define isprint(c)     (_pctype[(int)(c)] & (_BLANK | _PUNCT | _UPPER | _LOWER | _DIGIT))
-// #define isgraph(c)     (_pctype[(int)(c)] & (_PUNCT | _UPPER | _LOWER | _DIGIT))
-// #define iscntrl(c)     (_pctype[(int)(c)] & _CONTROL)
-// #define isleadbyte(c)  (_pctype[(int)(unsigned char)(c)] & _LEADBYTE)
+#define isxdigit(c)    (_pctype[(int)(c)] & _HEX)
+#define isspace(c)     (_pctype[(int)(c)] & _SPACE)
+#define ispunct(c)     (_pctype[(int)(c)] & _PUNCT)
+#define isalnum(c)     (_pctype[(int)(c)] & (_UPPER | _LOWER | _DIGIT))
+#define isprint(c)     (_pctype[(int)(c)] & (_BLANK | _PUNCT | _UPPER | _LOWER | _DIGIT))
+#define isgraph(c)     (_pctype[(int)(c)] & (_PUNCT | _UPPER | _LOWER | _DIGIT))
+#define iscntrl(c)     (_pctype[(int)(c)] & _CONTROL)
+#define isleadbyte(c)  (_pctype[(int)(unsigned char)(c)] & _LEADBYTE)
 
-// #define tolower(c)     (isupper(c) ? ((c) - 'A' + 'a') : (c))
-// #define toupper(c)     (islower(c) ? ((c) - 'a' + 'A') : (c))
+#define tolower(c)     (isupper(c) ? ((c) - 'A' + 'a') : (c))
+#define toupper(c)     (islower(c) ? ((c) - 'a' + 'A') : (c))
 
 // /* math functions */
 
