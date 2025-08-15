@@ -1,18 +1,5 @@
 #include "libmin.h"
 
-/** Gradient Descent for linear regression.
-* The formula for linear regression is : Y= wX + b
-* Cost Function: 1/n⅀(Yi - (wXi + b))^2 [i starts from 0 → n]
-*Functions Description:
-* 1) derivateWRTWeight(double weight, double bias):
-* 	Is the partial derivative of the cost function with respect to weight
-* 2) derivateWRTBias(double weight, double bias):
-* 	Is the partial derivative of the cost function with respect to bias
-* 3) gradientDescent(double weight, double bias):
-*	Represents the gradient descent function. It is used to manage the value of the weight
-*	and the bias of the linear function.
-*/
-
 #define M  50
 double L = 0.001;
 

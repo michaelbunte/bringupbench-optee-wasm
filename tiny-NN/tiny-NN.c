@@ -202,8 +202,7 @@ int train(NETWORK_DATA_TYPE eta, NETWORK_DATA_TYPE error_threshold, NETWORK_DATA
 	return EXIT_SUCCESS;
 }
 
-int
-main(void)
+intmain(void)
 {
   libmin_srand(42);
 	train(0.005, 0.01, 1.0, 0.4);
