@@ -1,9 +1,13 @@
 #!/bin/bash
 
-./tee_c_ecosystem/clean.sh
+./tee_c_ecosystem/cleanup.sh
 
 rm -rf ./tee_c_ecosystem/ta/include/common
-cp -R ./common ./tee_c_ecosystem/ta/include
+mkdir ./tee_c_ecosystem/ta/include/common
+cp -R ./libmin_common/* ./tee_c_ecosystem/ta/include/common
+
+rm ./tee_c_ecosystem/ta/user_ta_header_defines.h
+cp ./shared/user_ta_header_defines.h ./tee_c_ecosystem/ta
 
 export NV_TARGET_BOARD=234
 export CROSS_COMPILE_AARCH64_PATH=~/michael/aarch64--glibc--stable-2023.11-1

@@ -21,3 +21,6 @@ for pattern in "${patterns[@]}"; do
 done
 
 echo "Done."
+
+rm ./tee_c_ecosystem/ta/user_ta_header_defines.h
+rm -rf ./tee_c_ecosystem/ta/include/common
