@@ -8,7 +8,8 @@ TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
 TA_CLOSE_SESSION_ENTRY_POINT
 
-#define DATASET_SIZE 256
+#define DATASET_SIZE 40000
+
 int data[DATASET_SIZE];
 
 // total swaps executed so far
@@ -52,10 +53,10 @@ int mainf() {
   // initialize the array to sort
   for (unsigned i=0; i < DATASET_SIZE; i++)
     data[i] = libmin_rand();
-  print_data(data, DATASET_SIZE);
+  // print_data(data, DATASET_SIZE);
 
   bubblesort(data, DATASET_SIZE);
-  print_data(data, DATASET_SIZE);
+  // print_data(data, DATASET_SIZE);
 
   // check the array
   for (unsigned i=0; i < DATASET_SIZE-1; i++)
@@ -70,7 +71,7 @@ int mainf() {
   libmin_printf("INFO: %lu swaps executed.\n", swaps);
   libmin_printf("INFO: data is properly sorted.\n");
 
-//   libmin_success();
+//   libmin_success(); 
   return 0;
 }
 

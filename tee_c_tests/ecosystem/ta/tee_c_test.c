@@ -8,195 +8,72 @@ TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
 TA_CLOSE_SESSION_ENTRY_POINT
 
-#define NEURON_COUNT 2000
-#define SAMPLE_COUNT 2000
-#define MAX_ITERATIONS 100
+#define DATASET_SIZE 40000
 
-#define NETWORK_DATA_TYPE double
+int data[DATASET_SIZE];
 
-extern inline NETWORK_DATA_TYPE g_deriv(NETWORK_DATA_TYPE a);
+// total swaps executed so far
+unsigned long swaps = 0;
 
-/*
- * the sigmoid function
- */
-extern inline NETWORK_DATA_TYPE g(NETWORK_DATA_TYPE a);
-
-/*
- * samples the sin function from 'start' to 'end' with 'size' equidistant steps
- */
-void sampleSine(NETWORK_DATA_TYPE* input, NETWORK_DATA_TYPE* output, NETWORK_DATA_TYPE start, NETWORK_DATA_TYPE end, unsigned int size);
-
-/*
- * fills the array with values from [-0.5,0.5]
- */
-void fillArrayRand(NETWORK_DATA_TYPE* array, unsigned int size);
-
-//flavor!
-//#define FANCY
-#define OUTPUT
-
-/*
- * the derivative of the sigmoid function
- */
-inline NETWORK_DATA_TYPE g_deriv(NETWORK_DATA_TYPE a)
+void print_data(int *data, unsigned size)
 {
-	NETWORK_DATA_TYPE sigmoid = 1.0 / (1.0 + libmin_exp(-1.0*a));
-
-	return sigmoid*(1.0-sigmoid);
+  libmin_printf("DATA DUMP:\n");
+  for (unsigned i=0; i < size; i++)
+    libmin_printf("  data[%u] = %d\n", i, data[i]);
 }
 
-/*
- * the sigmoid function
- */
-inline NETWORK_DATA_TYPE g(NETWORK_DATA_TYPE a)
+void bubblesort(int *data, unsigned size)
 {
-	return 1.0 / (1.0 + libmin_exp(-1.0*a));
+  for (unsigned i=0; i < size-1; i++)
+  {
+    int swapped = FALSE;
+    for (unsigned j=0; j < size-1; j++)
+    {
+      if (data[j] > data[j+1])
+      {
+        int tmp = data[j];
+        data[j] = data[j+1];
+		
+        data[j+1] = tmp;
+        swapped = TRUE;
+        swaps++;
+      }
+    }
+    // done?
+    if (!swapped)
+      break;
+  }
 }
 
-/*
- * samples the sin function from 'start' to 'end' with 'size' equidistant steps
- */
-void sampleSine(NETWORK_DATA_TYPE* input, NETWORK_DATA_TYPE* output, NETWORK_DATA_TYPE start, NETWORK_DATA_TYPE end, unsigned int size)
-{
-	NETWORK_DATA_TYPE step = (end-start)/(NETWORK_DATA_TYPE)size;
+int mainf() {
+  // initialize the pseudo-RNG
+  libmin_srand(42);
+  // mysrand(time(NULL));
 
-	unsigned int i;
-	for(i=0; i<size; ++i)
-	{
-		input[i] = start + step * (NETWORK_DATA_TYPE)i;
-		output[i] = libmin_sin(input[i]);
-	}
+  // initialize the array to sort
+  for (unsigned i=0; i < DATASET_SIZE; i++)
+    data[i] = libmin_rand();
+  // print_data(data, DATASET_SIZE);
+
+  bubblesort(data, DATASET_SIZE);
+  // print_data(data, DATASET_SIZE);
+
+  // check the array
+  for (unsigned i=0; i < DATASET_SIZE-1; i++)
+  {
+    if (data[i] > data[i+1])
+    {
+      libmin_printf("ERROR: data is not properly sorted.\n");
+      return -1;
+    }
+  }
+
+  libmin_printf("INFO: %lu swaps executed.\n", swaps);
+  libmin_printf("INFO: data is properly sorted.\n");
+
+//   libmin_success(); 
+  return 0;
 }
-
-/*
- * fills the array with values from [-0.5,0.5]
- */
-void fillArrayRand(NETWORK_DATA_TYPE* array, unsigned int size)
-{
-	unsigned int i;
-	for(i=0; i<size; ++i)
-	{
-		array[i] = (NETWORK_DATA_TYPE)libmin_rand()/(NETWORK_DATA_TYPE)RAND_MAX - 0.5;
-	}
-}
-
-/*
- * fills the array with 0
- */
-void fillArrayNull(NETWORK_DATA_TYPE* array, unsigned int size)
-{
-	unsigned int i;
-	for(i=0; i<size; ++i)
-	{
-		array[i] = (NETWORK_DATA_TYPE)0;
-	}
-}
-
-int train(NETWORK_DATA_TYPE eta, NETWORK_DATA_TYPE error_threshold, NETWORK_DATA_TYPE bias, NETWORK_DATA_TYPE alpha)
-{
-
-	NETWORK_DATA_TYPE total_error = error_threshold + 1.0;//why?
-
-	//data
-	NETWORK_DATA_TYPE input[SAMPLE_COUNT];
-	NETWORK_DATA_TYPE output[SAMPLE_COUNT];
-
-	//NN container for NEURON_COUNT neurons
-	NETWORK_DATA_TYPE NN_output = 0;
-	NETWORK_DATA_TYPE weights_layer0_1[NEURON_COUNT*2]; //don't forget the bias :-) {PSSSTT: format = [input_w, bias_w, input_w, bias_w...]}
-	NETWORK_DATA_TYPE weights_layer1_2[NEURON_COUNT];
-
-	NETWORK_DATA_TYPE delta_weights_layer0_1[NEURON_COUNT*2]; //don't forget the bias :-) {PSSSTT: format = [input_w, bias_w, input_w, bias_w...]}
-	NETWORK_DATA_TYPE delta_weights_layer1_2[NEURON_COUNT];
-
-	NETWORK_DATA_TYPE delta_layer_2, delta_layer_1;
-	NETWORK_DATA_TYPE a;
-	NETWORK_DATA_TYPE g_layer_1[NEURON_COUNT];
-	NETWORK_DATA_TYPE g_deriv_layer_1[NEURON_COUNT];
-	NETWORK_DATA_TYPE delta_w_layer_2_1;
-	NETWORK_DATA_TYPE delta_w_layer_1_0;
-
-	//init the network
-	fillArrayRand(weights_layer0_1,NEURON_COUNT*2);//random values for the weight 0->1
-	fillArrayRand(weights_layer1_2,NEURON_COUNT);//random values for the weights 1->2
-
-	fillArrayNull(delta_weights_layer0_1,NEURON_COUNT*2);
-	fillArrayNull(delta_weights_layer1_2,NEURON_COUNT);
-
-	//create the training data
-	sampleSine(input, output, 0, 3.14, SAMPLE_COUNT);
-
-	//train the network
-	unsigned int iteration_count = 0;
-
-	while(total_error > error_threshold && iteration_count < MAX_ITERATIONS)
-	{
-		total_error = 0;//hmmm....
-
-		//present the data to the NN
-		unsigned int i;
-		for(i=0; i<SAMPLE_COUNT; ++i)
-		{
-			//propagate the sample forward
-			//layer 0 -> 1 ... and layer 1->2
-			unsigned int j;
-			for(j=0; j<NEURON_COUNT; ++j)
-			{
-				a = input[i] * weights_layer0_1[2*j] + bias * weights_layer0_1[2*j+1];
-				g_layer_1[j] = g(a);
-				g_deriv_layer_1[j] = g_deriv(a);
-
-				NN_output += weights_layer1_2[j] * g_layer_1[j];
-			}
-
-			//calculate the errors
-			delta_layer_2 = NN_output - output[i];
-			total_error += delta_layer_2*delta_layer_2;
-
-			//backpropagate the deltas
-			//layer 2->1 ... and 1->0
-			for(j=0; j<NEURON_COUNT; ++j)
-			{
-				delta_layer_1 = g_deriv_layer_1[j] * weights_layer1_2[j] * delta_layer_2;
-				delta_w_layer_2_1 = delta_layer_2 * g_layer_1[j];
-
-				//?
-				weights_layer1_2[j] -= delta_w_layer_2_1 * eta + alpha*delta_weights_layer1_2[j] ;
-				delta_weights_layer1_2[j] = delta_w_layer_2_1 * eta + alpha*delta_weights_layer1_2[j] ;
-
-				delta_w_layer_1_0 = delta_layer_1 * input[i];
-				weights_layer0_1[2*j] -= delta_w_layer_1_0 * eta + alpha*delta_weights_layer0_1[2*j];
-				delta_weights_layer0_1[2*j] = delta_w_layer_1_0 * eta + alpha*delta_weights_layer0_1[2*j];
-
-				delta_w_layer_1_0 = delta_layer_1 * bias;
-				weights_layer0_1[2*j+1] -= delta_w_layer_1_0 * eta + alpha*delta_weights_layer0_1[2*j+1];
-				delta_weights_layer0_1[2*j+1] = delta_w_layer_1_0 * eta + alpha*delta_weights_layer0_1[2*j+1];
-			}
-
-			//prepare for the next nerve wrecking round
-			NN_output = 0;
-		}
-
-		++iteration_count;
-
-		fillArrayNull(delta_weights_layer0_1,NEURON_COUNT*2);
-		fillArrayNull(delta_weights_layer1_2,NEURON_COUNT);
-
-	}
-    libmin_printf("iteration %d Total error %ld\n",iteration_count,(total_error*1000));
-
-	return EXIT_SUCCESS;
-}
-
-int mainf(void)
-{
-    libmin_srand(42);
-	train(0.005, 0.01, 1.0, 0.4);
-
-	SUCCESS();
-    return 0;
-}
-
 
 
 TA_INVOKE_COMMAND_ENTRY_POINT_HEADER {
