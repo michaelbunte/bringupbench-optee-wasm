@@ -3,14 +3,14 @@
 #include <tee_c_test.h>
 #include "common/libmin.h"
 
-// 1024 * 1024 * 32
+// 1024 * 1024 * 16
 
 TA_CREATE_ENTRY_POINT
 TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
 TA_CLOSE_SESSION_ENTRY_POINT
 
-#define DATASET_SIZE 30000
+#define DATASET_SIZE 40000
 
 int data[DATASET_SIZE];
 

@@ -1,6 +1,9 @@
 #!/bin/bash
 
-./tee_c_ecosystem/cleanup.sh
+./cleanup.sh
+
+rm ./tee_c_ecosystem/ta/tee_c_test.c 2>/dev/null
+cp ./tests/bubblesort.c ./tee_c_ecosystem/ta/tee_c_test.c
 
 rm -rf ./tee_c_ecosystem/ta/include/common
 mkdir ./tee_c_ecosystem/ta/include/common
