@@ -23,4 +23,4 @@ target/simple_mmio_plugin.so
 *.ta
 */dyn_list
 
-# ssysarch_tests/tee_c_ecosystem/ta/include/common
+ssysarch_tests/tee_c_ecosystem/ta/include/common
