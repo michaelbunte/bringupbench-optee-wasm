@@ -1,7 +1,7 @@
 #ifndef LIBMIN_H
 #define LIBMIN_H
 
-// =================== START CUSTOM SSYSARCH ================
+// =================== START CUSTOM SSYSARCH MACROS ================
 
 /*
  * Called when the instance of the TA is created. This is the first call in
@@ -68,7 +68,21 @@
 #define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
 #define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
 
-// =================== END CUSTOM SSYSARCH ================
+// =================== REWRITTEN FUNCTIONS ================
+
+// #ifndef TARGET_SILENT
+// /* print a message with format FMT to the co-simulation console */
+// int libmin_printf(char *fmt, ...);
+// int libmin_snprintf(char *s, size_t size, char *fmt, ...);
+// #else /* TARGET_SILENT */
+// /* run silent */
+
+#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
+// #define libmin_printf(FMT, ...) while(false){}
+
+// #endif /* TARGET_SILENT */
+
+// =================== END REWRITTEN FUNCTIONS ================
 
 #include <stddef.h>
 #include <tee_internal_api.h>
@@ -129,19 +143,6 @@ size_t libmin_strlen(const char *str);
 // int libmin_memcmp(const void *vl, const void *vr, size_t n);
 // void *libmin_memmove(void *dest, const void *src, size_t n);
 
-
-// #ifndef TARGET_SILENT
-// /* print a message with format FMT to the co-simulation console */
-// int libmin_printf(char *fmt, ...);
-// int libmin_snprintf(char *s, size_t size, char *fmt, ...);
-// #else /* TARGET_SILENT */
-// /* run silent */
-
-#define libmin_printf(FMT, ...) IMSG(FMT __VA_OPT__(,) __VA_ARGS__)
-// #define libmin_printf(FMT, ...) while(false){}
-
-// #endif /* TARGET_SILENT */
-
 // /* print one character */
 // void libmin_putc(char c);
 
@@ -172,7 +173,7 @@ void libmin_fail(int code);
 // /* see the random integer generator */
 void libmin_srand(unsigned int seed);
 
-// /* generate a random integer */
+// /* generate a random integer */ 
 unsigned int libmin_rand(void);
 
 // /* allocate memory */
@@ -280,13 +281,13 @@ unsigned int libmin_rand(void);
 // } while(0)
 
 // /* Get two 32 bit ints from a double.  */
-// #define EXTRACT_WORDS(hi,lo,d)                    \
-// do {                                              \
-//   union {double f; uint64_t i;} __u;              \
-//   __u.f = (d);                                    \
-//   (hi) = __u.i >> 32;                             \
-//   (lo) = (uint32_t)__u.i;                         \
-// } while (0)
+#define EXTRACT_WORDS(hi,lo,d)                    \
+do {                                              \
+  union {double f; uint64_t i;} __u;              \
+  __u.f = (d);                                    \
+  (hi) = __u.i >> 32;                             \
+  (lo) = (uint32_t)__u.i;                         \
+} while (0)
 
 // /* Get the more significant 32 bit int from a double.  */
 // #define GET_HIGH_WORD(hi,d)                       \
@@ -304,13 +305,13 @@ unsigned int libmin_rand(void);
 //   (lo) = (uint32_t)__u.i;                         \
 // } while (0)
 
-// /* Set a double from two 32 bit ints.  */
-// #define INSERT_WORDS(d,hi,lo)                     \
-// do {                                              \
-//   union {double f; uint64_t i;} __u;              \
-//   __u.i = ((uint64_t)(hi)<<32) | (uint32_t)(lo);  \
-//   (d) = __u.f;                                    \
-// } while (0)
+/* Set a double from two 32 bit ints.  */
+#define INSERT_WORDS(d,hi,lo)                     \
+do {                                              \
+  union {double f; uint64_t i;} __u;              \
+  __u.i = ((uint64_t)(hi)<<32) | (uint32_t)(lo);  \
+  (d) = __u.f;                                    \
+} while (0)
 
 // /* Set the more significant 32 bits of a double from an int.  */
 // #define SET_HIGH_WORD(d,hi)                       \
@@ -417,7 +418,7 @@ unsigned int libmin_rand(void);
 // double libmin_fabs(double x);
 // float libmin_fabsf(float x);
 // double libmin_pow(double x, double y);
-// double libmin_sqrt(double x);
+double libmin_sqrt(double x);
 // double libmin_exp(double x);
 int libmin_abs(int i);
 // double libmin_acos(double x);
