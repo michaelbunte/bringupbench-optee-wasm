@@ -158,8 +158,8 @@ size_t libmin_strlen(const char *str);
 // int libmin_sscanf(const char *buf, const char *fmt, ...);
 
 // /* failure/success codes */
-// #define EXIT_FAILURE  1 /* failing exit status */
-// #define EXIT_SUCCESS  0 /* successful exit status */
+#define EXIT_FAILURE  1 /* failing exit status */
+#define EXIT_SUCCESS  0 /* successful exit status */
 
 // /* exit co-simulation with failure exit code CODE */
 void libmin_fail(int code);
@@ -269,17 +269,17 @@ int _isctype(int c, int mask);
 
 // /* math functions */
 
-#define FORCE_EVAL(x) do {                        \
-	if (sizeof(x) == sizeof(float)) {         \
-		volatile float __x;               \
-		__x = (x); (void)__x;                        \
-	} else if (sizeof(x) == sizeof(double)) { \
-		volatile double __x;              \
-		__x = (x); (void)__x;                        \
-	} else {                                  \
-		volatile long double __x;         \
-		__x = (x); (void)__x;                        \
-	}                                         \
+#define FORCE_EVAL(x) do {                        	\
+	if (sizeof(x) == sizeof(float)) {         		\
+		volatile float __x;               			\
+		__x = (x); (void)__x;                       \
+	} else if (sizeof(x) == sizeof(double)) { 		\
+		volatile double __x;              			\
+		__x = (x); (void)__x;                       \
+	} else {                                  		\
+		volatile long double __x;         			\
+		__x = (x); (void)__x;                   	\
+	}                                         		\
 } while(0)
 
 // /* Get two 32 bit ints from a double.  */
@@ -371,57 +371,57 @@ do {                                              \
 
 #define DBL_EPSILON 2.22044604925031308085e-16
 
-// #define FP_NAN       0
-// #define FP_INFINITE  1
-// #define FP_ZERO      2
-// #define FP_SUBNORMAL 3
-// #define FP_NORMAL    4
+#define FP_NAN       0
+#define FP_INFINITE  1
+#define FP_ZERO      2
+#define FP_SUBNORMAL 3
+#define FP_NORMAL    4
 
-// static __inline unsigned __FLOAT_BITS(float __f)
-// {
-// 	union {float __f; unsigned __i;} __u;
-// 	__u.__f = __f;
-// 	return __u.__i;
-// }
-// static __inline unsigned long long __DOUBLE_BITS(double __f)
-// {
-// 	union {double __f; unsigned long long __i;} __u;
-// 	__u.__f = __f;
-// 	return __u.__i;
-// }
+static __inline unsigned __FLOAT_BITS(float __f)
+{
+	union {float __f; unsigned __i;} __u;
+	__u.__f = __f;
+	return __u.__i;
+}
+static __inline unsigned long long __DOUBLE_BITS(double __f)
+{
+	union {double __f; unsigned long long __i;} __u;
+	__u.__f = __f;
+	return __u.__i;
+}
 
-// static __inline int __fpclassify(double x)
-// {
-// 	union {double f; uint64_t i;} u = {x};
-// 	int e = u.i>>52 & 0x7ff;
-// 	if (!e) return u.i<<1 ? FP_SUBNORMAL : FP_ZERO;
-// 	if (e==0x7ff) return u.i<<12 ? FP_NAN : FP_INFINITE;
-// 	return FP_NORMAL;
-// }
+static __inline int __fpclassify(double x)
+{
+	union {double f; uint64_t i;} u = {x};
+	int e = u.i>>52 & 0x7ff;
+	if (!e) return u.i<<1 ? FP_SUBNORMAL : FP_ZERO;
+	if (e==0x7ff) return u.i<<12 ? FP_NAN : FP_INFINITE;
+	return FP_NORMAL;
+}
 
 // #define libmin_isfinite(x) ( \
 // 	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) < 0x7f800000 : \
 // 	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & -1ULL>>1) < 0x7ffULL<<52 : \
 // 	__fpclassify(x) > FP_INFINITE)
 
-// #define libmin_isnan(x) ( \
-// 	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) > 0x7f800000 : \
-// 	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & (uint64_t)-1>>1) > (uint64_t)0x7ff<<52 : \
-// 	__fpclassify(x) == FP_NAN)
+#define libmin_isnan(x) ( \
+	sizeof(x) == sizeof(float) ? (__FLOAT_BITS(x) & 0x7fffffff) > 0x7f800000 : \
+	sizeof(x) == sizeof(double) ? (__DOUBLE_BITS(x) & (uint64_t)-1>>1) > (uint64_t)0x7ff<<52 : \
+	__fpclassify(x) == FP_NAN)
 
-// #define M_PI		3.14159265358979323846	/* pi */
+#define M_PI		3.14159265358979323846	/* pi */
 // #define NAN     (__builtin_nanf(""))
 
 
 double libmin_floor(double x);
 double libmin_scalbn(double x, int n);
 double libmin_cos(double x);
-// double libmin_sin(double x);
+double libmin_sin(double x);
 // double libmin_fabs(double x);
 // float libmin_fabsf(float x);
 // double libmin_pow(double x, double y);
 double libmin_sqrt(double x);
-// double libmin_exp(double x);
+double libmin_exp(double x);
 int libmin_abs(int i);
 // double libmin_acos(double x);
 // double libmin_asin(double x);
