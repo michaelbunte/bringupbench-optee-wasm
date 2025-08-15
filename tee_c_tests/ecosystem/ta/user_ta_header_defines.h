@@ -46,7 +46,7 @@
 // DEFAULT
 // note 1024 * 1024 * 32 is the largest ta size you can do
 
-#define TA_STACK_SIZE			(1024 * 1024 * 32)
+#define TA_STACK_SIZE			(1024 * 1024 * 16)
 #define TA_DATA_SIZE			(32 * 1024)
 
 // #define TA_STACK_SIZE			(32 * 1024)

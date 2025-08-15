@@ -3,6 +3,8 @@
 #include <tee_c_test.h>
 #include "common/libmin.h"
 
+// 1024 * 1024 * 16
+
 TA_CREATE_ENTRY_POINT
 TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
