@@ -13,7 +13,14 @@ set -e
 
 # Compiler and flags
 CC=gcc
-CFLAGS="-O2 -Wall -DREE_C"
+CFLAGS="-Os \
+    -g3 \
+    -fpic \
+    -mstrict-align \
+    -mno-outline-atomics \
+    -fstack-protector-strong \
+    -nostdinc \
+    -DREE_C"
 
 # Source files
 SRC_FILES="benchmark.c \
