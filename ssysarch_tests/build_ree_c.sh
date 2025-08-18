@@ -19,7 +19,6 @@ CFLAGS="-Os \
     -mstrict-align \
     -mno-outline-atomics \
     -fstack-protector-strong \
-    -nostdinc \
     -DREE_C"
 
 # Source files
