@@ -10,14 +10,14 @@ TA_CLOSE_SESSION_ENTRY_POINT
 #define N 1300
 
 void print_matrix(const char* name, double mat[N][N]) {
-    libmin_printf("%s =\n", name);
+    // libmin_printf("%s =\n", name);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            libmin_printf("%8.4f ", mat[i][j]);
+            // libmin_printf("%8.4f ", mat[i][j]);
         }
-        libmin_printf("\n");
+        // libmin_printf("\n");
     }
-    libmin_printf("\n");
+    // libmin_printf("\n");
 }
 
 void lu_decomposition(double A[N][N], double L[N][N], double U[N][N]) {
@@ -60,7 +60,7 @@ int mainf() {
     // print_matrix("L", L);
     // print_matrix("U", U);
 
-    SUCCESS();
+    // SUCCESS();
     return 0;
 }
 

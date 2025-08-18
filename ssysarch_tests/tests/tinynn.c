@@ -182,7 +182,7 @@ int train(NETWORK_DATA_TYPE eta, NETWORK_DATA_TYPE error_threshold, NETWORK_DATA
 		fillArrayNull(delta_weights_layer1_2,NEURON_COUNT);
 
 	}
-    libmin_printf("iteration %d Total error %ld\n",iteration_count,(total_error*1000));
+    // libmin_printf("iteration %d Total error %ld\n",iteration_count,(total_error*1000));
 
 	return EXIT_SUCCESS;
 }

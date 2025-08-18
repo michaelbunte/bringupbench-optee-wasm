@@ -28,18 +28,18 @@ void init_board(int board[ROWS][COLS]) {
 }
 
 void print_board(int board[ROWS][COLS]) {
-    libmin_printf("\n");
+    // libmin_printf("\n");
     for (int r = 0; r < ROWS; r++) {
         for (int c = 0; c < COLS; c++) {
             char ch = board[r][c] == 1 ? 'X' : (board[r][c] == 2 ? 'O' : '.');
             libmin_printf("%c ", ch);
         }
-        libmin_printf("\n");
+        // libmin_printf("\n");
     }
     for (int c = 0; c < COLS; c++) {
-        libmin_printf("%d ", c);
+        // libmin_printf("%d ", c);
     }
-    libmin_printf("\n\n");
+    // libmin_printf("\n\n");
 }
 
 // Returns 1 if the column is not full.
@@ -307,14 +307,14 @@ void play_game() {
             break;
         }
         make_move(board, best_move, current_player);
-        libmin_printf("Move %d: Player %d drops in column %d (score=%d)\n", move_number, current_player, best_move, score);
+        // libmin_printf("Move %d: Player %d drops in column %d (score=%d)\n", move_number, current_player, best_move, score);
         
         if (check_win(board, current_player)) {
-          libmin_printf("Player %d wins!\n", current_player);
+        //   libmin_printf("Player %d wins!\n", current_player);
           break;
         }
         if (board_full(board)) {
-          libmin_printf("Game is a draw.\n");
+        //   libmin_printf("Game is a draw.\n");
           break;
         }
         // Switch players.
@@ -325,7 +325,7 @@ void play_game() {
 
 int mainf() {
     libmin_srand(42);
-    libmin_printf("Connect Four: Minimax AI Self-Play\n");
+    // libmin_printf("Connect Four: Minimax AI Self-Play\n");
     play_game();
 
     SUCCESS();

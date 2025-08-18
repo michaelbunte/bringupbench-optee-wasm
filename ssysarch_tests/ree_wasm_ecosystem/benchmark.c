@@ -62,13 +62,13 @@ int mainf() {
   {
     if (data[i] > data[i+1])
     {
-      // libmin_printf("ERROR: data is not properly sorted.\n");
+      libmin_printf("ERROR: data is not properly sorted.\n");
       return -1;
     }
   }
 
-  // libmin_printf("INFO: %lu swaps executed.\n", swaps);
-  // libmin_printf("INFO: data is properly sorted.\n");
+  libmin_printf("INFO: %lu swaps executed.\n", swaps);
+  libmin_printf("INFO: data is properly sorted.\n");
 
 //   libmin_success(); 
   return 0;

@@ -21,7 +21,7 @@ typedef struct {
 
 int mainf(void) {
     
-  libmin_printf("Beginning sim\n");
+//   libmin_printf("Beginning sim\n");
 
     // Initialize three particles with arbitrary masses, positions (in meters), and velocities (in m/s)
     Particle bodies[N_BODIES] = {
@@ -72,17 +72,17 @@ int mainf(void) {
     }
 
     // Print final positions and velocities after the simulation
-    libmin_printf("Final state after %d steps:\n", NUM_STEPS);
+    // libmin_printf("Final state after %d steps:\n", NUM_STEPS);
     for (int i = 0; i < N_BODIES; i++) {
-        libmin_printf("Body %d:\n", i);
-        libmin_printf("  Position = (%ld, %ld, %ld) m\n", 
-                    (long)(bodies[i].pos[0]*1000),
-                    (long)(bodies[i].pos[1]*1000),
-                    (long)(bodies[i].pos[2]*1000));
-        libmin_printf("  Velocity = (%ld, %ld, %ld) m/s\n\n", 
-                    (long)(bodies[i].vel[0]*1000),
-                    (long)(bodies[i].vel[1]*1000),
-                    (long)(bodies[i].vel[2]*1000));
+        // libmin_printf("Body %d:\n", i);
+        // libmin_printf("  Position = (%ld, %ld, %ld) m\n", 
+        //             (long)(bodies[i].pos[0]*1000),
+        //             (long)(bodies[i].pos[1]*1000),
+        //             (long)(bodies[i].pos[2]*1000));
+        // libmin_printf("  Velocity = (%ld, %ld, %ld) m/s\n\n", 
+        //             (long)(bodies[i].vel[0]*1000),
+        //             (long)(bodies[i].vel[1]*1000),
+        //             (long)(bodies[i].vel[2]*1000));
     } 
     
     // libmin_success();
