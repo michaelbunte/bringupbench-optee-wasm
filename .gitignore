@@ -28,3 +28,8 @@ ssysarch_tests/tee_c_ecosystem/ta/include/tee_c_test.c
 
 ssysarch_tests/ree_c_ecosystem/common
 ssysarch_tests/ree_c_ecosystem/benchmark.c 
+ssysarch_tests/ree_c_ecosystem/benchmark 
+
+ssysarch_tests/ree_wasm_ecosystem/common
+ssysarch_tests/ree_wasm_ecosystem/benchmark.c 
+ssysarch_tests/ree_wasm_ecosystem/benchmark
