@@ -13,7 +13,11 @@ set -e
 
 # Compiler and flags
 CC=wasm32-wasi-clang
-CFLAGS="-DREE_WASM"
+CFLAGS="-Os \
+    -g3 \
+    -fpic \
+    -fstack-protector-strong \
+    -DREE_WASM"
 
 # Source files
 SRC_FILES="benchmark.c \

@@ -16,13 +16,11 @@
 	#include <tee_internal_api.h>
 	#define TA_CREATE_ENTRY_POINT TEE_Result TA_CreateEntryPoint(void)  \
 	{                                                                   \
-		DMSG("has been called");                                        \
 		return TEE_SUCCESS;                                             \
 	} 
 
 	#define TA_DESTROY_ENTRY_POINT void TA_DestroyEntryPoint(void)  \
-	{                                                               \
-		DMSG("has been called");                                    \
+	{                                                               
 	}
 
 	#define TA_OPEN_SESSION_ENTRY_POINT TEE_Result TA_OpenSessionEntryPoint(    \
@@ -38,7 +36,6 @@
 			return TEE_ERROR_BAD_PARAMETERS;                                    \
 		(void)&params;                                                          \
 		(void)&sess_ctx;                                                        \
-		IMSG("Hello World!\n");                                                 \
 		return TEE_SUCCESS;                                                     \
 	}
 
@@ -46,7 +43,6 @@
 		void __maybe_unused *sess_ctx)                                      \
 	{                                                                       \
 		(void)&sess_ctx;                                                    \
-		IMSG("Goodbye!\n");                                                 \
 	}
 
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_HEADER    \
