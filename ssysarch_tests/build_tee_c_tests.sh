@@ -1,6 +1,7 @@
 #!/bin/bash
 
 rm ./built_tests/*_ta.ta
+rm ./built_tests/*.tar
 
 ./build_ta.sh bubblesort
 cp ./tee_c_ecosystem/ta/8aaaf200-2450-11e4-abe2-0002a5d5c51b.ta \
@@ -21,3 +22,8 @@ cp ./tee_c_ecosystem/ta/8aaaf200-2450-11e4-abe2-0002a5d5c51b.ta \
 ./build_ta.sh tinynn
 cp ./tee_c_ecosystem/ta/8aaaf200-2450-11e4-abe2-0002a5d5c51b.ta \
     ./built_tests/tinynn_ta.ta
+
+cd built_tests
+tar -cf ta_tests.tar tinynn_ta.ta nbody_ta.ta lu_decomp_ta.ta connect4_ta.ta bubblesort_ta.ta
+
+rm *.ta
