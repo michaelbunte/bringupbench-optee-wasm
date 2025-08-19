@@ -1,8 +1,9 @@
 #!/bin/bash
 
 ./cleanup.sh
+
 rm ./tee_c_ecosystem/ta/tee_c_test.c 2>/dev/null
-cp ./tests/$1.c ./tee_c_ecosystem/ta/tee_c_test.c
+cp ./tests/$0.c ./tee_c_ecosystem/ta/tee_c_test.c
 
 rm -rf ./tee_c_ecosystem/ta/include/common
 mkdir ./tee_c_ecosystem/ta/include/common

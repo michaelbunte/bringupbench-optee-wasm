@@ -17,9 +17,8 @@ patterns=(
 echo "Cleaning up..."
 
 for pattern in "${patterns[@]}"; do
-    find . -type f -name "$pattern" -exec rm -v {} +
+    find . -path ./built_tests -prune -o -type f -name "$pattern" -exec rm -v {} +
 done
-
 
 rm ./tee_c_ecosystem/ta/tee_c_test.c 2>/dev/null
 rm -rf ./tee_c_ecosystem/ta/include/common 2>/dev/null
