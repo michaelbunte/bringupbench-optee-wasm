@@ -5,8 +5,8 @@ TA_DESTROY_ENTRY_POINT
 TA_OPEN_SESSION_ENTRY_POINT
 TA_CLOSE_SESSION_ENTRY_POINT
 
-#define N_BODIES 3           // Number of particles
-#define NUM_STEPS 10000000  // Number of simulation steps
+#define N_BODIES 3            // Number of particles
+#define NUM_STEPS 1000000     // Number of simulation steps
 #define DT 0.01               // Time step (seconds)
 #define G 6.67430e-11         // Gravitational constant (m^3 kg^-1 s^-2)
 #ifndef EPS
