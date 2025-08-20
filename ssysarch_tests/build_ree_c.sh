@@ -13,7 +13,7 @@ set -e
 
 # Compiler and flags
 CC=gcc
-CFLAGS="-Os \
+CFLAGS="-O0 \
     -g3 \
     -fpic \
     -mstrict-align \

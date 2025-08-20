@@ -5,6 +5,8 @@
 
 #if defined(REE_C) || defined(REE_WASM)
 	#include <stdio.h>
+	#include <time.h>
+	#include <stdlib.h>
 	#define TA_CREATE_ENTRY_POINT
 	#define TA_DESTROY_ENTRY_POINT
 	#define TA_OPEN_SESSION_ENTRY_POINT
@@ -58,6 +60,30 @@
 
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_PREAMBLE (void)&sess_ctx;
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
+#endif
+
+#if defined(REE_C) | defined(REE_WASM) 
+	#define TIME struct timespec
+	#define GET_TIME(time) clock_gettime(CLOCK_MONOTONIC, time)
+	#define PRINT_TIME(time) printf("%u:%u\n", time.tv_sec, time.tv_nsec / 1000000);
+	#define TIME_DELTA_MS(S, E) \
+		( (int64_t)((int64_t)((E).tv_sec) - (int64_t)((S).tv_sec)) * 1000 + \
+		(int64_t)((int64_t)((E).tv_nsec / 1000000)  - (int64_t)((S).tv_nsec / 1000000)) )
+	#define PRINT_TIME_DELTA_MS(S, E) printf("%u\n", TIME_DELTA_MS(S,E))
+
+	#define MALLOC(size) calloc(1, size)
+	#define FREE(size) free(size)
+#else
+	#define TIME TEE_Time
+	#define GET_TIME(time) TEE_GetSystemTime(time)
+	#define PRINT_TIME(time) IMSG("%u:%u", time.seconds, time.millis)
+	#define TIME_DELTA_MS(S, E) \
+		( (int64_t)((int64_t)((E).seconds) - (int64_t)((S).seconds)) * 1000 + \
+		(int64_t)((int64_t)((E).millis)  - (int64_t)((S).millis)) )
+	#define PRINT_TIME_DELTA_MS(S, E) IMSG("%u", TIME_DELTA_MS(S, E))
+
+	#define MALLOC(size) TEE_Malloc(size, TEE_MALLOC_FILL_ZERO)
+	#define FREE(buffer) TEE_Free(buffer)
 #endif
 
 // =================== REWRITTEN FUNCTIONS ================

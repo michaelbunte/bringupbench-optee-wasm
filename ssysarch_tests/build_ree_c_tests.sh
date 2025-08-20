@@ -2,7 +2,8 @@
 rm ./built_tests/*_ree_c
 rm ./built_tests/*.tar
 
-TESTS=(bubblesort connect4 lu_decomp nbody tinynn)
+# TESTS=(bubblesort connect4 lu_decomp nbody tinynn)
+TESTS=(micro_benchmarks)
 
 for TEST in "${TESTS[@]}"; do
     ./build_ree_c.sh $TEST
