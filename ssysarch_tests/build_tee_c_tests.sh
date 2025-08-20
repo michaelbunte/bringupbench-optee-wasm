@@ -2,6 +2,7 @@
 
 rm ./built_tests/*_ta.ta
 rm ./built_tests/*.tar
+mkdir built_tests || true
 
 ./build_ta.sh bubblesort
 cp ./tee_c_ecosystem/ta/8aaaf200-2450-11e4-abe2-0002a5d5c51b.ta \
