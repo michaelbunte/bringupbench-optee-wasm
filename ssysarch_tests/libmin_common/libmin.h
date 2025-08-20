@@ -60,6 +60,20 @@
 	#define TA_INVOKE_COMMAND_ENTRY_POINT_EPILOGUE return TEE_SUCCESS;
 #endif
 
+#if defined(REE_C)
+#elif defined(REE_WASM) 
+#else
+	#define TIME TEE_Time
+	#define GET_TIME(time) TEE_GetSystemTime(time)
+	#define PRINT_TIME(time) IMSG("%u:%u", time.seconds, time.millis)
+	#define TIME_DELTA_MS(S, E) \
+		( (int64_t)((int64_t)((E).seconds) - (int64_t)((S).seconds)) * 1000 + \
+		(int64_t)((int64_t)((E).millis)  - (int64_t)((S).millis)) )
+	#define PRINT_TIME_DELTA_MS(S, E) IMSG("%u", TIME_DELTA_MS(S, E))
+	#define MALLOC(size) TEE_Malloc(size, TEE_MALLOC_FILL_ZERO)
+	#define FREE(buffer) TEE_Free(buffer)
+#endif
+
 // =================== REWRITTEN FUNCTIONS ================
 
 // #ifndef TARGET_SILENT

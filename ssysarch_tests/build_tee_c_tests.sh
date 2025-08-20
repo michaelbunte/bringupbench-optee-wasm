@@ -5,7 +5,10 @@ rm ./built_tests/*.tar
 mkdir built_tests || true
 
 
-TESTS=(bubblesort connect4 lu_decomp nbody tinynn)
+# TESTS=(bubblesort connect4 lu_decomp nbody tinynn)
+TESTS=(micro_benchmarks)
+FILES=("${TESTS[@]/%/_ta.ta}")
+
 
 for TEST in "${TESTS[@]}"; do
     ./build_ta.sh $TEST
@@ -14,6 +17,6 @@ for TEST in "${TESTS[@]}"; do
 done
 
 cd built_tests
-tar -cf ta_tests.tar tinynn_ta.ta nbody_ta.ta lu_decomp_ta.ta connect4_ta.ta bubblesort_ta.ta
+tar -cf ta_tests.tar "${FILES[@]}"
 
-rm *.ta`
+rm *.ta

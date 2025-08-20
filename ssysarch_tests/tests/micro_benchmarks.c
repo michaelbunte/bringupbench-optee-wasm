@@ -12,7 +12,7 @@ int mainf(void) {
 
     GET_TIME(&t0);
     for (int i = 0; i < 10000000; i++) {
-        int *buffer = (int*) MALLOC(10000);
+        int *buffer = (int*) MALLOC(100);
         buffer[2] = i;
         FREE(buffer);
     }
