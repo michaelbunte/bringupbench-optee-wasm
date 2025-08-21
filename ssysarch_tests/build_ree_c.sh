@@ -14,7 +14,7 @@ set -e
 # Compiler and flags
 CC=gcc
 CFLAGS="-O3 \
-    -mstrict-align \
+-mstrict-align \
     -DREE_C"
 
 # Source files
