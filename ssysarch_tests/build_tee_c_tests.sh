@@ -5,8 +5,8 @@ rm ./built_tests/*.tar
 mkdir built_tests || true
 
 
-# TESTS=(bubblesort connect4 lu_decomp nbody tinynn)
-TESTS=(micro_benchmarks)
+TESTS=(bubblesort connect4 lu_decomp nbody tinynn micro_benchmarks)
+# TESTS=(micro_benchmarks)
 FILES=("${TESTS[@]/%/_ta.ta}")
 
 

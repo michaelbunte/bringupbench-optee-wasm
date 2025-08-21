@@ -320,7 +320,7 @@ void play_game() {
         // Switch players.
         current_player = (current_player == 1) ? 2 : 1;
     }
-    print_board(board);
+    // print_board(board);
 }
 
 int mainf() {
