@@ -13,12 +13,8 @@ set -e
 
 # Compiler and flags
 CC=gcc
-CFLAGS="-O0 \
-    -g3 \
-    -fpic \
+CFLAGS="-O3 \
     -mstrict-align \
-    -mno-outline-atomics \
-    -fstack-protector-strong \
     -DREE_C"
 
 # Source files
