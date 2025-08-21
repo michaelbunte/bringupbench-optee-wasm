@@ -2,9 +2,12 @@ sm := ta_arm64
 sm-ta_arm64 := y
 CFG_ARM64_ta_arm64 := y
 ta_arm64-platform-cppflags := -DARM64=1 -D__LP64__=1 -DMBEDTLS_SELF_TEST
-ta_arm64-platform-cflags := -Os -g3 -fpic -mstrict-align -mno-outline-atomics -fstack-protector-strong
+ta_arm64-platform-cflags := -O3 -fpic
 ta_arm64-platform-aflags := -pipe -g
-ta_arm64-platform-cxxflags := -fpic -Os -g3
+ta_arm64-platform-cxxflags := -O3 
+# ta_arm64-platform-cflags := -Os -g3 -fpic -mstrict-align -mno-outline-atomics -fstack-protector-strong
+# ta_arm64-platform-aflags := -pipe -g
+# ta_arm64-platform-cxxflags := -fpic -Os -g3
 CFG_TA_FLOAT_SUPPORT := y
 CFG_SECURE_DATA_PATH := n
 CFG_TA_MBEDTLS_SELF_TEST := y
